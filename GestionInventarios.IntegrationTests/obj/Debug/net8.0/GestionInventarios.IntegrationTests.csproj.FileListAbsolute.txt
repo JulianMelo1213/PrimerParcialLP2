@@ -644,3 +644,4 @@ C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\GestionInventarios.IntegrationTests.pdb
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\GestionInventarios.IntegrationTests.genruntimeconfig.cache
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\ref\GestionInventarios.IntegrationTests.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\FluentAssertions.dll

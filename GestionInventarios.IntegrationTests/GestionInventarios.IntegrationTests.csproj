@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
@@ -25,10 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PrimerParcialLP2\PrimerParcialLP2.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controller\" />
   </ItemGroup>
 
 </Project>

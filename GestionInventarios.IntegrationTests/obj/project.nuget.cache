@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Sy88ovdVuzgx2v5TZW5xiuKZKX+BVjadmGAIOqzAUFVXegqnIJWKh9B+ApwjuMrWeJkMaal8+OHxdk6sRl8Ffw==",
+  "dgSpecHash": "49OlVR8g+dOrQOjWhTj3tPYHjtejb0bm2jys/iTNOHUmugL6pGsnsh99yv5divbodkvNf8JGOXp5n0+US1qarA==",
   "success": true,
   "projectFilePath": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.IntegrationTests\\GestionInventarios.IntegrationTests.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\gusta\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\gusta\\.nuget\\packages\\fluentassertions\\6.12.0\\fluentassertions.6.12.0.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\gusta\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
