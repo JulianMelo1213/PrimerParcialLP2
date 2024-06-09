@@ -60,8 +60,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var categoria = mapper.Map<Categorium>(categoriaDto);
-            _context.Entry(categoria).State = EntityState.Modified;
+            var categoria = await _context.Categoria.FindAsync(id);
+            if (categoria == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(categoriaDto, categoria);
 
             try
             {
@@ -81,7 +86,6 @@ namespace PrimerParcialLP2.Controllers
 
             return NoContent();
         }
-
         // POST: api/Categoriums
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

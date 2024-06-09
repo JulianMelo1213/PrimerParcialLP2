@@ -17,7 +17,7 @@ public partial class GestionInventariosContext : DbContext
 
     public virtual DbSet<Ajuste> Ajustes { get; set; }
 
-    public virtual DbSet<Almacen> Almacens { get; set; }
+    public virtual DbSet<Almacen> Almacen { get; set; }
 
     public virtual DbSet<Categorium> Categoria { get; set; }
 

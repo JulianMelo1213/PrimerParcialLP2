@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PrimerParcialLP2.DTO;
 using PrimerParcialLP2.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

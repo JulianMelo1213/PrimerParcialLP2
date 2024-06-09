@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -9,8 +8,6 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using PrimerParcialLP2.DTO.Entrada;
 
-
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
@@ -18,12 +15,12 @@ namespace PrimerParcialLP2.Controllers
     public class EntradumsController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
         public EntradumsController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
 
         // GET: api/Entradums
@@ -31,7 +28,7 @@ namespace PrimerParcialLP2.Controllers
         public async Task<ActionResult<IEnumerable<EntradaGetDTO>>> GetEntrada()
         {
             var entradaList = await _context.Entrada.ToListAsync();
-            var entradaDto = mapper.Map<IEnumerable<EntradaGetDTO>>(entradaList);
+            var entradaDto = _mapper.Map<IEnumerable<EntradaGetDTO>>(entradaList);
             return Ok(entradaDto);
         }
 
@@ -45,13 +42,12 @@ namespace PrimerParcialLP2.Controllers
             {
                 return NotFound();
             }
-            var entradaDto = mapper.Map<EntradaGetDTO>(entrada);
+            var entradaDto = _mapper.Map<EntradaGetDTO>(entrada);
 
             return Ok(entradaDto);
         }
 
         // PUT: api/Entradums/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEntradum(int id, EntradaPutDTO entradaDTO)
         {
@@ -60,8 +56,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var entrada = mapper.Map<Entradum>(entradaDTO);
-            _context.Entry(entrada).State = EntityState.Modified;
+            var entrada = await _context.Entrada.FindAsync(id);
+            if (entrada == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(entradaDTO, entrada);
 
             try
             {
@@ -83,11 +84,10 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // POST: api/Entradums
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Entradum>> PostEntradum(EntradaInsertDTO entradaDto)
         {
-            var entrada = mapper.Map<Entradum>(entradaDto);
+            var entrada = _mapper.Map<Entradum>(entradaDto);
             await _context.Entrada.AddAsync(entrada);
             await _context.SaveChangesAsync();
 

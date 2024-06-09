@@ -51,7 +51,6 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // PUT: api/Salidums/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSalidum(int id, SalidaPutDTO salidaDto)
         {
@@ -60,8 +59,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var salida = mapper.Map<Salidum>(salidaDto);
-            _context.Entry(salida).State = EntityState.Modified;
+            var salida = await _context.Salida.FindAsync(id);
+            if (salida == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(salidaDto, salida);
 
             try
             {

@@ -52,7 +52,6 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // PUT: api/Proveedors/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProveedor(int id, ProveedorPutDTO proveedorDto)
         {
@@ -61,8 +60,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var proveedor = mapper.Map<Proveedor>(proveedorDto);
-            _context.Entry(proveedor).State = EntityState.Modified;
+            var proveedor = await _context.Proveedors.FindAsync(id);
+            if (proveedor == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(proveedorDto, proveedor);
 
             try
             {

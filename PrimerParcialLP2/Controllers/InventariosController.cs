@@ -52,7 +52,6 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // PUT: api/Inventarios/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutInventario(int id, InventarioPutDTO inventarioDto)
         {
@@ -61,8 +60,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var inventario = mapper.Map<Inventario>(inventarioDto);
-            _context.Entry(inventario).State = EntityState.Modified;
+            var inventario = await _context.Inventarios.FindAsync(id);
+            if (inventario == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(inventarioDto, inventario);
 
             try
             {

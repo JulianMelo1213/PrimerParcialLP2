@@ -53,7 +53,6 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // PUT: api/Productoes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducto(int id, ProductoPutDTO productoDto)
         {
@@ -62,8 +61,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var producto = mapper.Map<Producto>(productoDto);
-            _context.Entry(producto).State = EntityState.Modified;
+            var producto = await _context.Productos.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            mapper.Map(productoDto, producto);
 
             try
             {

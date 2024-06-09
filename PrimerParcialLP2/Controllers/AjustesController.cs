@@ -60,8 +60,14 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var ajuste = mapper.Map<Ajuste>(ajusteDto);
-            _context.Entry(ajuste).State = EntityState.Modified;
+            var ajuste = await _context.Ajustes.FindAsync(id);
+            if (ajuste == null)
+            {
+                return NotFound();
+            }
+
+            // Map the DTO to the existing entity
+            mapper.Map(ajusteDto, ajuste);
 
             try
             {
@@ -81,6 +87,8 @@ namespace PrimerParcialLP2.Controllers
 
             return NoContent();
         }
+
+
 
         // POST: api/Ajustes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

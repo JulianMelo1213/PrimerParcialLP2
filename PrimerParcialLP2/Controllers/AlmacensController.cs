@@ -9,8 +9,6 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using PrimerParcialLP2.DTO.Almacen;
 
-
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
@@ -18,20 +16,20 @@ namespace PrimerParcialLP2.Controllers
     public class AlmacensController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
         public AlmacensController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
 
         // GET: api/Almacens
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AlmacenGetDTO>>> GetAlmacens()
         {
-            var almacenList = await _context.Almacens.ToListAsync();
-            var almacenDto = mapper.Map<IEnumerable<AlmacenGetDTO>>(almacenList);
+            var almacenList = await _context.Almacen.ToListAsync();
+            var almacenDto = _mapper.Map<IEnumerable<AlmacenGetDTO>>(almacenList);
             return Ok(almacenDto);
         }
 
@@ -39,13 +37,13 @@ namespace PrimerParcialLP2.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AlmacenGetDTO>> GetAlmacen(int id)
         {
-            var almacen = await _context.Almacens.FindAsync(id);
+            var almacen = await _context.Almacen.FindAsync(id);
 
             if (almacen == null)
             {
                 return NotFound();
             }
-            var almacenDto = mapper.Map<AlmacenGetDTO>(almacen);
+            var almacenDto = _mapper.Map<AlmacenGetDTO>(almacen);
 
             return Ok(almacenDto);
         }
@@ -60,8 +58,13 @@ namespace PrimerParcialLP2.Controllers
                 return BadRequest();
             }
 
-            var almacen = mapper.Map<Almacen>(almacenDto);
-            _context.Entry(almacen).State = EntityState.Modified;
+            var almacen = await _context.Almacen.FindAsync(id);
+            if (almacen == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(almacenDto, almacen);
 
             try
             {
@@ -87,8 +90,8 @@ namespace PrimerParcialLP2.Controllers
         [HttpPost]
         public async Task<ActionResult<Almacen>> PostAlmacen(AlmacenInsertDTO almacenDto)
         {
-            var almacen = mapper.Map<Almacen>(almacenDto);
-            await _context.Almacens.AddAsync(almacen);
+            var almacen = _mapper.Map<Almacen>(almacenDto);
+            await _context.Almacen.AddAsync(almacen);
             await _context.SaveChangesAsync();
 
             return Ok(almacen.AlmacenId);
@@ -98,13 +101,13 @@ namespace PrimerParcialLP2.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlmacen(int id)
         {
-            var almacen = await _context.Almacens.FindAsync(id);
+            var almacen = await _context.Almacen.FindAsync(id);
             if (almacen == null)
             {
                 return NotFound();
             }
 
-            _context.Almacens.Remove(almacen);
+            _context.Almacen.Remove(almacen);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -112,7 +115,7 @@ namespace PrimerParcialLP2.Controllers
 
         private bool AlmacenExists(int id)
         {
-            return _context.Almacens.Any(e => e.AlmacenId == id);
+            return _context.Almacen.Any(e => e.AlmacenId == id);
         }
     }
 }
