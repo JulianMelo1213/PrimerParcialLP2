@@ -11,7 +11,7 @@ Este proyecto es una API REST desarrollada en ASP.NET Core 8 utilizando el enfoq
 
 ### Paso 1: Clonar el Repositorio
 
-```bash
+
 git clone https://github.com/JulianMelo1213/PrimerParcialLP2.git
 cd tu-repositorio
 
