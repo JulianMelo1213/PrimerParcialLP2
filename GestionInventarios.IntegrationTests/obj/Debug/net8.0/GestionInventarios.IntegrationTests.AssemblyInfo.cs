@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionInventarios.IntegrationTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19f0edbaf174f7f7f142499ae89281c7e6d81843")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b5c6c37fc9c0108d657445eb556b5af31e8aa72")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionInventarios.IntegrationTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionInventarios.IntegrationTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

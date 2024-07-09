@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.tests\\controller\\ajustescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|solutionrelative:gestioninventarios.tests\\controller\\ajustescontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.tests\\mock\\mockdbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|solutionrelative:gestioninventarios.tests\\mock\\mockdbcontexthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\controllers\\ajustescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\controllers\\ajustescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,45 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MockDbContextHelper.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Mock\\MockDbContextHelper.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Tests\\Mock\\MockDbContextHelper.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Mock\\MockDbContextHelper.cs",
-              "RelativeToolTip": "GestionInventarios.Tests\\Mock\\MockDbContextHelper.cs",
-              "ViewState": "AQIAAM0AAAAAAAAAAADwvwAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T23:59:32.482Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AjustesControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\AjustesControllerTests.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Tests\\Controller\\AjustesControllerTests.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\AjustesControllerTests.cs",
-              "RelativeToolTip": "GestionInventarios.Tests\\Controller\\AjustesControllerTests.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAQwEQAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T23:59:20.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AjustesController.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "RelativeDocumentMoniker": "PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "RelativeToolTip": "PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-09T23:53:52.455Z",
-              "EditorCaption": ""
             }
           ]
         },
