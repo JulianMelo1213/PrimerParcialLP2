@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GestionInventarios.Shared\GestionInventarios.Shared.csproj" />
     <ProjectReference Include="..\PrimerParcialLP2\PrimerParcialLP2.csproj" />
   </ItemGroup>
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PrimerParcialLP2.Models;
 using AutoMapper;
-using PrimerParcialLP2.DTO.Inventario;
+using GestionInventarios.Shared.DTOs.Inventario;
 
 
 

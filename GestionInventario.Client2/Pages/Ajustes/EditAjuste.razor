@@ -1,0 +1,69 @@
+﻿@page "/ajustes/edit/{id:int}"
+@using GestionInventario.Client2.Services.Ajuste
+@using GestionInventarios.Shared.DTOs.Ajuste
+@inject IAjusteServicio AjusteService
+@inject NavigationManager NavigationManager
+
+
+<h3>Editar Ajuste</h3>
+
+<EditForm Model="editAjuste" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Producto Id:</label>
+        <InputNumber @bind-Value="editAjuste.ProductoId" />
+    </div>
+    <div>
+        <label>Almacen Id:</label>
+        <InputNumber @bind-Value="editAjuste.AlmacenId" />
+    </div>
+    <div>
+        <label>Cantidad:</label>
+        <InputNumber @bind-Value="editAjuste.Cantidad" />
+    </div>
+    <div>
+        <label>Fecha:</label>
+        <InputDate @bind-Value="editAjuste.Fecha" />
+    </div>
+    <div>
+        <label>Tipo:</label>
+        <InputText @bind-Value="editAjuste.Tipo" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@code {
+    private AjustePutDTO editAjuste = new AjustePutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var ajuste = await AjusteService.GetAjusteByIdAsync(id);
+        if (ajuste != null)
+        {
+            editAjuste.AjusteId = ajuste.AjusteId;
+            editAjuste.ProductoId = ajuste.ProductoId;
+            editAjuste.AlmacenId = ajuste.AlmacenId;
+            editAjuste.Cantidad = ajuste.Cantidad;
+            editAjuste.Fecha = ajuste.Fecha;
+            editAjuste.Tipo = ajuste.Tipo;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await AjusteService.UpdateAjusteAsync(id, editAjuste);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/ajustes");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

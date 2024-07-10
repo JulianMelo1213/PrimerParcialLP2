@@ -1,0 +1,65 @@
+﻿@page "/ajustes/create"
+@using GestionInventario.Client2.Services.Ajuste
+@using GestionInventarios.Shared.DTOs.Ajuste
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject IAjusteServicio AjusteService
+@inject NavigationManager NavigationManager
+
+<h3>Crear Ajuste</h3>
+
+<EditForm Model="newAjuste" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group">
+        <label>Producto Id:</label>
+        <InputNumber class="form-control" @bind-Value="newAjuste.ProductoId" />
+        <ValidationMessage For="@(() => newAjuste.ProductoId)" />
+    </div>
+    <div class="form-group">
+        <label>Almacen Id:</label>
+        <InputNumber class="form-control" @bind-Value="newAjuste.AlmacenId" />
+        <ValidationMessage For="@(() => newAjuste.AlmacenId)" />
+    </div>
+    <div class="form-group">
+        <label>Cantidad:</label>
+        <InputNumber class="form-control" @bind-Value="newAjuste.Cantidad" />
+        <ValidationMessage For="@(() => newAjuste.Cantidad)" />
+    </div>
+    <div class="form-group">
+        <label>Fecha:</label>
+        <InputDate class="form-control" @bind-Value="newAjuste.Fecha" />
+        <ValidationMessage For="@(() => newAjuste.Fecha)" />
+    </div>
+    <div class="form-group">
+        <label>Tipo:</label>
+        <InputText class="form-control" @bind-Value="newAjuste.Tipo" />
+        <ValidationMessage For="@(() => newAjuste.Tipo)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">@errorMessage</div>
+}
+
+@code {
+    private AjusteInsertDTO newAjuste = new AjusteInsertDTO();
+    private string errorMessage;
+
+    private async Task HandleValidSubmit()
+    {
+        errorMessage = string.Empty; // Clear any existing error messages
+        var success = await AjusteService.CreateAjusteAsync(newAjuste);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/ajustes");
+        }
+        else
+        {
+            errorMessage = "Ocurrió un error al crear el ajuste. Por favor, inténtelo de nuevo.";
+        }
+    }
+}

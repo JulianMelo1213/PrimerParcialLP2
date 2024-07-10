@@ -1,0 +1,58 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MudDebugAnalyzer = 
+build_property.MudAllowedAttributePattern = 
+build_property.MudIllegalParameters = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = GestionInventario.Client2
+build_property.RootNamespace = GestionInventario.Client2
+build_property.ProjectDir = C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventario.Client2\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventario.Client2
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Ajustes/AjusteList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWp1c3Rlc1xBanVzdGVMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Ajustes/CreateAjuste.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWp1c3Rlc1xDcmVhdGVBanVzdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Ajustes/EditAjuste.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWp1c3Rlc1xFZGl0QWp1c3RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-98nool7dqs
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kerjq4fm36

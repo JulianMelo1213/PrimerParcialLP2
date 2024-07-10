@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using PrimerParcialLP2.DTO;
 using PrimerParcialLP2.Models;
 
 public class Program
@@ -19,6 +18,16 @@ public class Program
         builder.Services.AddSwaggerGen();
         builder.Services.AddAutoMapper(typeof(Program));
 
+        builder.Services.AddCors(opciones =>
+        {
+            opciones.AddPolicy("AllowAllOrigins", app =>
+            {
+                app.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+            });
+        });
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -29,6 +38,8 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+
+        app.UseCors("AllowAllOrigins");
 
         app.UseAuthorization();
 

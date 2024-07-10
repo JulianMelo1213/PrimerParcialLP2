@@ -1,0 +1,12 @@
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\bin\Debug\net8.0\GestionInventarios.Shared.deps.json
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\bin\Debug\net8.0\GestionInventarios.Shared.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\bin\Debug\net8.0\GestionInventarios.Shared.pdb
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.AssemblyInfoInputs.cache
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.AssemblyInfo.cs
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.csproj.CoreCompileInputs.cache
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.sourcelink.json
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\refint\GestionInventarios.Shared.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\GestionInventarios.Shared.pdb
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.Shared\obj\Debug\net8.0\ref\GestionInventarios.Shared.dll

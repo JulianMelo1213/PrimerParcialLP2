@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
 using Moq;
 using PrimerParcialLP2.Controllers;
-using PrimerParcialLP2.DTO.Ajuste;
+using GestionInventarios.Shared.DTOs.Ajuste;
 using PrimerParcialLP2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2.DTO;
+using PrimerParcialLP2;
+
 
 public class AjustesControllerTests
 {

@@ -12,7 +12,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionInventarios.Tests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionInventarios.IntegrationTests", "GestionInventarios.IntegrationTests\GestionInventarios.IntegrationTests.csproj", "{C36D2B3E-DF54-4F25-ABFE-C094EEA85E45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionInventarios.Client", "GestionInventarios.Client\GestionInventarios.Client.csproj", "{636C03CC-2E2F-47BA-97B2-8A8330AEE9BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionInventarios.Shared", "GestionInventarios.Shared\GestionInventarios.Shared.csproj", "{3E623579-F577-4BDD-AF9B-40B0787221F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionInventario.Client2", "GestionInventario.Client2\GestionInventario.Client2.csproj", "{F501386E-357B-4413-8415-FD933E5A14EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +34,14 @@ Global
 		{C36D2B3E-DF54-4F25-ABFE-C094EEA85E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C36D2B3E-DF54-4F25-ABFE-C094EEA85E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C36D2B3E-DF54-4F25-ABFE-C094EEA85E45}.Release|Any CPU.Build.0 = Release|Any CPU
-		{636C03CC-2E2F-47BA-97B2-8A8330AEE9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{636C03CC-2E2F-47BA-97B2-8A8330AEE9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{636C03CC-2E2F-47BA-97B2-8A8330AEE9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{636C03CC-2E2F-47BA-97B2-8A8330AEE9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E623579-F577-4BDD-AF9B-40B0787221F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E623579-F577-4BDD-AF9B-40B0787221F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E623579-F577-4BDD-AF9B-40B0787221F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E623579-F577-4BDD-AF9B-40B0787221F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F501386E-357B-4413-8415-FD933E5A14EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F501386E-357B-4413-8415-FD933E5A14EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F501386E-357B-4413-8415-FD933E5A14EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F501386E-357B-4413-8415-FD933E5A14EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
