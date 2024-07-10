@@ -1,0 +1,49 @@
+﻿@page "/ajustes/create"
+@inject IAjusteService AjusteService
+@inject NavigationManager NavigationManager
+
+<h3>Crear Ajuste</h3>
+
+<EditForm Model="newAjuste" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Producto Id:</label>
+        <InputNumber @bind-Value="newAjuste.ProductoId" />
+    </div>
+    <div>
+        <label>Almacen Id:</label>
+        <InputNumber @bind-Value="newAjuste.AlmacenId" />
+    </div>
+    <div>
+        <label>Cantidad:</label>
+        <InputNumber @bind-Value="newAjuste.Cantidad" />
+    </div>
+    <div>
+        <label>Fecha:</label>
+        <InputDate @bind-Value="newAjuste.Fecha" />
+    </div>
+    <div>
+        <label>Tipo:</label>
+        <InputText @bind-Value="newAjuste.Tipo" />
+    </div>
+    <button type="submit">Guardar</button>
+</EditForm>
+
+@code {
+    private AjusteInsertDTO newAjuste = new AjusteInsertDTO();
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await AjusteService.CreateAjusteAsync(newAjuste);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/ajustes");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}
