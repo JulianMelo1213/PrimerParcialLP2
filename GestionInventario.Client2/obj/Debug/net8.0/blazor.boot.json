@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "GestionInventario.Client2",
   "resources": {
-    "hash": "sha256-hnoTwZ8m3sJM+p9/pgdkZLMmZ134ukAGhNaOMtrr098=",
+    "hash": "sha256-ChaRNDGEEQEqMgIb8XnRqQHvyrY3Bt1fvOVe8eLLxjc=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.sgjjd91fj5.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -208,12 +208,12 @@
       "mscorlib.wasm": "sha256-fLbZiSHBNdpHoh4EgRqMaNP5NQyIK5TEj6AXFLqo8m8=",
       "netstandard.wasm": "sha256-d4xbAE8qrKq5euUoZHPO+jkYPjlCYBzUew45MKsYKic=",
       "System.Private.CoreLib.wasm": "sha256-8yi6NcX1lkNQgV4WKjnMBYIZyKh4P+OXnXVQmgxGZD4=",
-      "GestionInventarios.Shared.wasm": "sha256-CzcrUMSotLER7BSU+U1QlLxGFWC14qjCtx2ssGdXA+w=",
-      "GestionInventario.Client2.wasm": "sha256-c8ANYB1YXHIXyBDp3xonQft22TdJgXalrvcXTdTtUT4="
+      "GestionInventarios.Shared.wasm": "sha256-tDKLaJ0TKvjsynxeit8ZxONsXciJbv+oU7B/CHFyu0I=",
+      "GestionInventario.Client2.wasm": "sha256-rPSyyDa9PuTjIIcrl/kcxMnayOv8VlHs1SYHX0v4yew="
     },
     "pdb": {
-      "GestionInventarios.Shared.pdb": "sha256-0K2BveDT7K+0FLTLfEMhDRrqmDLUabZOUOPfWTdo5Mo=",
-      "GestionInventario.Client2.pdb": "sha256-7A6DfABm0UpwrLbfqDzOyAt9c+dTlnrINZu9cdSP6SU="
+      "GestionInventarios.Shared.pdb": "sha256-rHymDpBfhSZ+jyOOjoioqZK3lCFz7Y6tL3DBwpIl8B0=",
+      "GestionInventario.Client2.pdb": "sha256-0NeZsktaO/GtFvZS8Iq6fWJOwhAAg7q1VStsAr02Jkg="
     }
   },
   "cacheBootResources": true,

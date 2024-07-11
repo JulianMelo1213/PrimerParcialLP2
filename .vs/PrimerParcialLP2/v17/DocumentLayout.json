@@ -3,40 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\pages\\ajustes\\createajuste.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\pages\\ajustes\\createajuste.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E623579-F577-4BDD-AF9B-40B0787221F5}|GestionInventarios.Shared\\GestionInventarios.Shared.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.shared\\dtos\\ajuste\\ajusteinsertdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E623579-F577-4BDD-AF9B-40B0787221F5}|GestionInventarios.Shared\\GestionInventarios.Shared.csproj|solutionrelative:gestioninventarios.shared\\dtos\\ajuste\\ajusteinsertdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\pages\\ajustes\\editajuste.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\pages\\ajustes\\editajuste.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3E623579-F577-4BDD-AF9B-40B0787221F5}|GestionInventarios.Shared\\GestionInventarios.Shared.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.shared\\dtos\\ajuste\\ajustegetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3E623579-F577-4BDD-AF9B-40B0787221F5}|GestionInventarios.Shared\\GestionInventarios.Shared.csproj|solutionrelative:gestioninventarios.shared\\dtos\\ajuste\\ajustegetdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\services\\ajuste\\ajusteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\services\\ajuste\\ajusteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\pages\\ajustes\\ajustelist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\pages\\ajustes\\ajustelist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\wwwroot\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\controllers\\ajustescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\controllers\\ajustescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\services\\ajuste\\iajusteservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\services\\ajuste\\iajusteservicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\models\\gestioninventarioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\models\\gestioninventarioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\gestioninventario.client2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\gestioninventario.client2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventario.client2\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F501386E-357B-4413-8415-FD933E5A14EE}|GestionInventario.Client2\\GestionInventario.Client2.csproj|solutionrelative:gestioninventario.client2\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -48,61 +44,6 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IAjusteServicio.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Services\\Ajuste\\IAjusteServicio.cs",
-              "RelativeDocumentMoniker": "GestionInventario.Client2\\Services\\Ajuste\\IAjusteServicio.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Services\\Ajuste\\IAjusteServicio.cs",
-              "RelativeToolTip": "GestionInventario.Client2\\Services\\Ajuste\\IAjusteServicio.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T19:22:16.707Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AjusteService.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Services\\Ajuste\\AjusteService.cs",
-              "RelativeDocumentMoniker": "GestionInventario.Client2\\Services\\Ajuste\\AjusteService.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Services\\Ajuste\\AjusteService.cs",
-              "RelativeToolTip": "GestionInventario.Client2\\Services\\Ajuste\\AjusteService.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAzwBcAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T19:21:54.213Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AjustesController.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "RelativeDocumentMoniker": "PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "RelativeToolTip": "PrimerParcialLP2\\Controllers\\AjustesController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAgwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T19:23:25.345Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AjusteInsertDTO.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteInsertDTO.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteInsertDTO.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteInsertDTO.cs",
-              "RelativeToolTip": "GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteInsertDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T20:04:38.34Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
@@ -117,68 +58,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AjusteGetDTO.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteGetDTO.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteGetDTO.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteGetDTO.cs",
-              "RelativeToolTip": "GestionInventarios.Shared\\DTOs\\Ajuste\\AjusteGetDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-10T19:50:33.876Z",
-              "EditorCaption": ""
+              "DocumentIndex": 6,
+              "Title": "GestionInventario.Client2.csproj",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\GestionInventario.Client2.csproj",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\GestionInventario.Client2.csproj",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\GestionInventario.Client2.csproj",
+              "RelativeToolTip": "GestionInventario.Client2\\GestionInventario.Client2.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-10T23:05:37.644Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\App.razor",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\App.razor",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\App.razor",
+              "RelativeToolTip": "GestionInventario.Client2\\App.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-10T22:22:53.895Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\_Imports.razor",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\_Imports.razor",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\_Imports.razor",
+              "RelativeToolTip": "GestionInventario.Client2\\_Imports.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-10T21:02:25.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "NavMenu.razor",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Layout\\NavMenu.razor",
               "RelativeDocumentMoniker": "GestionInventario.Client2\\Layout\\NavMenu.razor",
               "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Layout\\NavMenu.razor",
               "RelativeToolTip": "GestionInventario.Client2\\Layout\\NavMenu.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T19:44:09.439Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CreateAjuste.razor",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\CreateAjuste.razor",
-              "RelativeDocumentMoniker": "GestionInventario.Client2\\Pages\\Ajustes\\CreateAjuste.razor",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\CreateAjuste.razor*",
-              "RelativeToolTip": "GestionInventario.Client2\\Pages\\Ajustes\\CreateAjuste.razor*",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T19:32:52.902Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T20:53:22.599Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AjusteList.razor",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\AjusteList.razor",
-              "RelativeDocumentMoniker": "GestionInventario.Client2\\Pages\\Ajustes\\AjusteList.razor",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\AjusteList.razor",
-              "RelativeToolTip": "GestionInventario.Client2\\Pages\\Ajustes\\AjusteList.razor",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T19:22:14.533Z",
-              "EditorCaption": ""
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Program.cs",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\Program.cs",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Program.cs",
+              "RelativeToolTip": "GestionInventario.Client2\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-10T20:51:26.807Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EditAjuste.razor",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\EditAjuste.razor",
-              "RelativeDocumentMoniker": "GestionInventario.Client2\\Pages\\Ajustes\\EditAjuste.razor",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Pages\\Ajustes\\EditAjuste.razor",
-              "RelativeToolTip": "GestionInventario.Client2\\Pages\\Ajustes\\EditAjuste.razor",
-              "ViewState": "AQIAABUAAAAAAAAAAAAAAC8AAAAyAAAA",
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\Layout\\MainLayout.razor",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "GestionInventario.Client2\\Layout\\MainLayout.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T19:22:15.542Z",
+              "WhenOpened": "2024-07-10T20:38:12.086Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\wwwroot\\index.html",
+              "RelativeDocumentMoniker": "GestionInventario.Client2\\wwwroot\\index.html",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventario.Client2\\wwwroot\\index.html",
+              "RelativeToolTip": "GestionInventario.Client2\\wwwroot\\index.html",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAkwC8AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-07-10T20:20:00.215Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GestionInventariosContext.cs",
+              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
+              "RelativeDocumentMoniker": "PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
+              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
+              "RelativeToolTip": "PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAgwBkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T01:58:57.18Z"
             }
           ]
         },
