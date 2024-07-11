@@ -1,0 +1,55 @@
+﻿@page "/almacens/edit/{id:int}"
+@using GestionInventario.Client2.Services.Almacen
+@using GestionInventarios.Shared.DTOs.Almacen
+@inject IAlmacenService AlmacenService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Almacen</h3>
+
+    <EditForm Model="editAlmacen" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="editAlmacen.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ubicación:</label>
+            <InputText @bind-Value="editAlmacen.Ubicacion" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private AlmacenPutDTO editAlmacen = new AlmacenPutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var almacen = await AlmacenService.GetAlmacenByIdAsync(id);
+        if (almacen != null)
+        {
+            editAlmacen.AlmacenId = almacen.AlmacenId;
+            editAlmacen.Nombre = almacen.Nombre;
+            editAlmacen.Ubicacion = almacen.Ubicacion;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await AlmacenService.UpdateAlmacenAsync(id, editAlmacen);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/almacens");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

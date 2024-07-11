@@ -1,0 +1,45 @@
+﻿@page "/productos/create"
+@using GestionInventario.Client2.Services.Producto
+@using GestionInventarios.Shared.DTOs.Producto
+@inject IProductoService ProductoService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Crear Producto</h3>
+
+    <EditForm Model="newProducto" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="newProducto.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <InputText @bind-Value="newProducto.Descripcion" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio:</label>
+            <InputNumber @bind-Value="newProducto.Precio" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private ProductoInsertDTO newProducto = new ProductoInsertDTO();
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await ProductoService.CreateProductoAsync(newProducto);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/productos");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

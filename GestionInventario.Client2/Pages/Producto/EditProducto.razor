@@ -1,0 +1,60 @@
+﻿@page "/productos/edit/{id:int}"
+@using GestionInventario.Client2.Services.Producto
+@using GestionInventarios.Shared.DTOs.Producto
+@inject IProductoService ProductoService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Producto</h3>
+
+    <EditForm Model="editProducto" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="editProducto.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <InputText @bind-Value="editProducto.Descripcion" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio:</label>
+            <InputNumber @bind-Value="editProducto.Precio" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private ProductoPutDTO editProducto = new ProductoPutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var producto = await ProductoService.GetProductoByIdAsync(id);
+        if (producto != null)
+        {
+            editProducto.ProductoId = producto.ProductoId;
+            editProducto.Nombre = producto.Nombre;
+            editProducto.Descripcion = producto.Descripcion;
+            editProducto.Precio = producto.Precio;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await ProductoService.UpdateProductoAsync(id, editProducto);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/productos");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

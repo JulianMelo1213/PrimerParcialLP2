@@ -1,0 +1,73 @@
+﻿@page "/inventarios"
+@using GestionInventario.Client2.Services.Inventario
+@using GestionInventarios.Shared.DTOs.Inventario
+@inject IInventarioService InventarioService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Inventario</h3>
+
+    @if (inventarios == null)
+    {
+        <div class="alert alert-info" role="alert">
+            <strong>Cargando...</strong>
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Producto Id</th>
+                    <th>Almacén Id</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var inventario in inventarios)
+                {
+                    <tr>
+                        <td>@inventario.InventarioId</td>
+                        <td>@inventario.ProductoId</td>
+                        <td>@inventario.AlmacenId</td>
+                        <td>@inventario.Cantidad</td>
+                        <td>@inventario.Fecha.ToShortDateString()</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm me-2" @onclick="() => EditInventario(inventario.InventarioId)">Editar</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteInventario(inventario.InventarioId)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button class="btn btn-primary" @onclick="CreateInventario">Crear Nuevo Inventario</button>
+    }
+</div>
+
+@code {
+    private List<InventarioGetDTO> inventarios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        inventarios = await InventarioService.GetInventariosAsync();
+    }
+
+    private void CreateInventario()
+    {
+        NavigationManager.NavigateTo("/inventarios/create");
+    }
+
+    private void EditInventario(int id)
+    {
+        NavigationManager.NavigateTo($"/inventarios/edit/{id}");
+    }
+
+    private async Task DeleteInventario(int id)
+    {
+        await InventarioService.DeleteInventarioAsync(id);
+        inventarios = await InventarioService.GetInventariosAsync(); // Reload the list
+    }
+}

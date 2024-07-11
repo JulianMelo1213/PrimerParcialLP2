@@ -1,0 +1,41 @@
+﻿@page "/almacens/create"
+@using GestionInventario.Client2.Services.Almacen
+@using GestionInventarios.Shared.DTOs.Almacen
+@inject IAlmacenService AlmacenService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Crear Almacen</h3>
+
+    <EditForm Model="newAlmacen" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="newAlmacen.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ubicación:</label>
+            <InputText @bind-Value="newAlmacen.Ubicacion" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private AlmacenInsertDTO newAlmacen = new AlmacenInsertDTO();
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await AlmacenService.CreateAlmacenAsync(newAlmacen);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/almacens");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

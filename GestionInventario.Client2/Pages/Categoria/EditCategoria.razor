@@ -1,0 +1,55 @@
+﻿@page "/categorias/edit/{id:int}"
+@using GestionInventario.Client2.Services.Categoria
+@using GestionInventarios.Shared.DTOs.Categoria
+@inject ICategoriaService CategoriaService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Categoría</h3>
+
+    <EditForm Model="editCategoria" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="editCategoria.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <InputText @bind-Value="editCategoria.Descripcion" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private CategoriaPutDTO editCategoria = new CategoriaPutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var categoria = await CategoriaService.GetCategoriaByIdAsync(id);
+        if (categoria != null)
+        {
+            editCategoria.CategoriaId = categoria.CategoriaId;
+            editCategoria.Nombre = categoria.Nombre;
+            editCategoria.Descripcion = categoria.Descripcion;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await CategoriaService.UpdateCategoriaAsync(id, editCategoria);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/categorias");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

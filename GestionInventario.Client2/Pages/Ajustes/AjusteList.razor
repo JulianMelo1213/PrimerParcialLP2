@@ -4,51 +4,53 @@
 @inject IAjusteServicio AjusteService
 @inject NavigationManager NavigationManager
 
+<div class="container mt-4">
+    <h3 class="mb-4">Ajustes</h3>
 
-<h3>Ajustes</h3>
-
-@if (ajustes == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Producto Id</th>
-                <th>Almacen Id</th>
-                <th>Cantidad</th>
-                <th>Fecha</th>
-                <th>Tipo</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var ajuste in ajustes)
-            {
+    @if (ajustes == null)
+    {
+        <div class="alert alert-info" role="alert">
+            <strong>Cargando...</strong>
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
                 <tr>
-                    <td>@ajuste.AjusteId</td>
-                    <td>@ajuste.ProductoId</td>
-                    <td>@ajuste.AlmacenId</td>
-                    <td>@ajuste.Cantidad</td>
-                    <td>@ajuste.Fecha</td>
-                    <td>@ajuste.Tipo</td>
-                    <td>
-                        <button @onclick="() => EditAjuste(ajuste.AjusteId)">Editar</button>
-                        <button @onclick="() => DeleteAjuste(ajuste.AjusteId)">Eliminar</button>
-                    </td>
+                    <th>Id</th>
+                    <th>Producto Id</th>
+                    <th>Almacen Id</th>
+                    <th>Cantidad</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-    <button @onclick="CreateAjuste">Crear Nuevo Ajuste</button>
-}
+            </thead>
+            <tbody>
+                @foreach (var ajuste in ajustes)
+                {
+                    <tr>
+                        <td>@ajuste.AjusteId</td>
+                        <td>@ajuste.ProductoId</td>
+                        <td>@ajuste.AlmacenId</td>
+                        <td>@ajuste.Cantidad</td>
+                        <td>@ajuste.Fecha.ToShortDateString()</td>
+                        <td>@ajuste.Tipo</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm me-2" @onclick="() => EditAjuste(ajuste.AjusteId)">Editar</button>
+                            <button class="btn btn-danger btn-sm" @onclick="() => DeleteAjuste(ajuste.AjusteId)">Eliminar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <button class="btn btn-primary" @onclick="CreateAjuste">Crear Nuevo Ajuste</button>
+    }
+</div>
 
 @code {
-    private List<AjusteGetDTO>
-    ajustes;
+    private List<AjusteGetDTO> ajustes;
 
     protected override async Task OnInitializedAsync()
     {

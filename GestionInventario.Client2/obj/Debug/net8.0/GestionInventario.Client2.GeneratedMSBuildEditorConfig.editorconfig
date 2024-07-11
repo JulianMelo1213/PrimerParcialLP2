@@ -38,8 +38,92 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWp1c3Rlc1xFZGl0QWp1c3RlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Almacen/AlmacenList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxtYWNlblxBbG1hY2VuTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Almacen/CreateAlmacen.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxtYWNlblxDcmVhdGVBbG1hY2VuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Almacen/EditAlmacen.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWxtYWNlblxFZGl0QWxtYWNlbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Categoria/CategoriaList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhXENhdGVnb3JpYUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Categoria/CreateCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhXENyZWF0ZUNhdGVnb3JpYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Categoria/EditCategoria.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcmlhXEVkaXRDYXRlZ29yaWEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Entrada/CreateEntrada.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cmFkYVxDcmVhdGVFbnRyYWRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Entrada/EditEntrada.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cmFkYVxFZGl0RW50cmFkYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Entrada/ListEntrada.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRW50cmFkYVxMaXN0RW50cmFkYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Inventario/CreateInventario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50YXJpb1xDcmVhdGVJbnZlbnRhcmlvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Inventario/EditInventario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50YXJpb1xFZGl0SW52ZW50YXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Inventario/ListInventario.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW52ZW50YXJpb1xMaXN0SW52ZW50YXJpby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Producto/CreateProducto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdG9cQ3JlYXRlUHJvZHVjdG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Producto/EditProducto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdG9cRWRpdFByb2R1Y3RvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Producto/ListProducto.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdG9cTGlzdFByb2R1Y3RvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Proveedor/CreateProveedor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvdmVlZG9yXENyZWF0ZVByb3ZlZWRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Proveedor/EditProveedor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvdmVlZG9yXEVkaXRQcm92ZWVkb3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Proveedor/ListProveedor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvdmVlZG9yXExpc3RQcm92ZWVkb3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Salida/CreateSalida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsaWRhXENyZWF0ZVNhbGlkYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Salida/EditSalida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsaWRhXEVkaXRTYWxpZGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/Pages/Salida/ListSalida.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2FsaWRhXExpc3RTYWxpZGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/gusta/source/repos/PrimerParcialLP2/GestionInventario.Client2/_Imports.razor]

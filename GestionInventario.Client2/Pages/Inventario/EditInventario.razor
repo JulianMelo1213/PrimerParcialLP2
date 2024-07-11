@@ -1,0 +1,65 @@
+﻿@page "/inventarios/edit/{id:int}"
+@using GestionInventario.Client2.Services.Inventario
+@using GestionInventarios.Shared.DTOs.Inventario
+@inject IInventarioService InventarioService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Inventario</h3>
+
+    <EditForm Model="editInventario" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Producto Id:</label>
+            <InputNumber @bind-Value="editInventario.ProductoId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Almacén Id:</label>
+            <InputNumber @bind-Value="editInventario.AlmacenId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad:</label>
+            <InputNumber @bind-Value="editInventario.Cantidad" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha:</label>
+            <InputDate @bind-Value="editInventario.Fecha" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private InventarioPutDTO editInventario = new InventarioPutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var inventario = await InventarioService.GetInventarioByIdAsync(id);
+        if (inventario != null)
+        {
+            editInventario.InventarioId = inventario.InventarioId;
+            editInventario.ProductoId = inventario.ProductoId;
+            editInventario.AlmacenId = inventario.AlmacenId;
+            editInventario.Cantidad = inventario.Cantidad;
+            editInventario.Fecha = inventario.Fecha;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await InventarioService.UpdateInventarioAsync(id, editInventario);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/inventarios");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

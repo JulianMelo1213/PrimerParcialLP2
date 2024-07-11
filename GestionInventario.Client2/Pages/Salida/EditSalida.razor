@@ -1,0 +1,60 @@
+﻿@page "/salidas/edit/{id:int}"
+@using GestionInventario.Client2.Services.Salida
+@using GestionInventarios.Shared.DTOs.Salida
+@inject ISalidaService SalidaService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Salida</h3>
+
+    <EditForm Model="editSalida" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Producto Id:</label>
+            <InputNumber @bind-Value="editSalida.ProductoId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad:</label>
+            <InputNumber @bind-Value="editSalida.Cantidad" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha:</label>
+            <InputDate @bind-Value="editSalida.Fecha" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private SalidaPutDTO editSalida = new SalidaPutDTO();
+
+    [Parameter]
+    public int id { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var salida = await SalidaService.GetSalidaByIdAsync(id);
+        if (salida != null)
+        {
+            editSalida.SalidaId = salida.SalidaId;
+            editSalida.ProductoId = salida.ProductoId;
+            editSalida.Cantidad = salida.Cantidad;
+            editSalida.Fecha = salida.Fecha;
+        }
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await SalidaService.UpdateSalidaAsync(id, editSalida);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/salidas");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}

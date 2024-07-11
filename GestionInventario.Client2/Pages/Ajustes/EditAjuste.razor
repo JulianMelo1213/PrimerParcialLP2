@@ -4,35 +4,36 @@
 @inject IAjusteServicio AjusteService
 @inject NavigationManager NavigationManager
 
+<div class="container mt-4">
+    <h3 class="mb-4">Editar Ajuste</h3>
 
-<h3>Editar Ajuste</h3>
+    <EditForm Model="editAjuste" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
 
-<EditForm Model="editAjuste" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-
-    <div>
-        <label>Producto Id:</label>
-        <InputNumber @bind-Value="editAjuste.ProductoId" />
-    </div>
-    <div>
-        <label>Almacen Id:</label>
-        <InputNumber @bind-Value="editAjuste.AlmacenId" />
-    </div>
-    <div>
-        <label>Cantidad:</label>
-        <InputNumber @bind-Value="editAjuste.Cantidad" />
-    </div>
-    <div>
-        <label>Fecha:</label>
-        <InputDate @bind-Value="editAjuste.Fecha" />
-    </div>
-    <div>
-        <label>Tipo:</label>
-        <InputText @bind-Value="editAjuste.Tipo" />
-    </div>
-    <button type="submit">Guardar</button>
-</EditForm>
+        <div class="mb-3">
+            <label class="form-label">Producto Id:</label>
+            <InputNumber @bind-Value="editAjuste.ProductoId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Almacen Id:</label>
+            <InputNumber @bind-Value="editAjuste.AlmacenId" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Cantidad:</label>
+            <InputNumber @bind-Value="editAjuste.Cantidad" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Fecha:</label>
+            <InputDate @bind-Value="editAjuste.Fecha" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Tipo:</label>
+            <InputText @bind-Value="editAjuste.Tipo" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
 
 @code {
     private AjustePutDTO editAjuste = new AjustePutDTO();

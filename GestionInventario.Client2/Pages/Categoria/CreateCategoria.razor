@@ -1,0 +1,41 @@
+﻿@page "/categorias/create"
+@using GestionInventario.Client2.Services.Categoria
+@using GestionInventarios.Shared.DTOs.Categoria
+@inject ICategoriaService CategoriaService
+@inject NavigationManager NavigationManager
+
+<div class="container mt-4">
+    <h3 class="mb-4">Crear Categoría</h3>
+
+    <EditForm Model="newCategoria" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre:</label>
+            <InputText @bind-Value="newCategoria.Nombre" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <InputText @bind-Value="newCategoria.Descripcion" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </EditForm>
+</div>
+
+@code {
+    private CategoriaInsertDTO newCategoria = new CategoriaInsertDTO();
+
+    private async Task HandleValidSubmit()
+    {
+        var success = await CategoriaService.CreateCategoriaAsync(newCategoria);
+        if (success)
+        {
+            NavigationManager.NavigateTo("/categorias");
+        }
+        else
+        {
+            // Handle error
+        }
+    }
+}
