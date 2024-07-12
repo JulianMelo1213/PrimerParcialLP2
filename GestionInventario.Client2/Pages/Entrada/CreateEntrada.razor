@@ -1,6 +1,7 @@
 ﻿@page "/entradas/create"
 @using GestionInventario.Client2.Services.Entrada
 @using GestionInventarios.Shared.DTOs.Entrada
+@using GestionInventarios.Shared.DTOs.Producto
 @inject IEntradaService EntradaService
 @inject NavigationManager NavigationManager
 
@@ -12,8 +13,14 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="newEntrada.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="newEntrada.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -29,6 +36,12 @@
 
 @code {
     private EntradaInsertDTO newEntrada = new EntradaInsertDTO();
+    private List<ProductoGetDTO> productos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productos = await EntradaService.GetProductosAsync();
+    }
 
     private async Task HandleValidSubmit()
     {

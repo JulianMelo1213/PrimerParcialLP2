@@ -1,6 +1,7 @@
 ﻿@page "/salidas/edit/{id:int}"
 @using GestionInventario.Client2.Services.Salida
 @using GestionInventarios.Shared.DTOs.Salida
+@using GestionInventarios.Shared.DTOs.Producto
 @inject ISalidaService SalidaService
 @inject NavigationManager NavigationManager
 
@@ -12,8 +13,14 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="editSalida.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="editSalida.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -29,6 +36,7 @@
 
 @code {
     private SalidaPutDTO editSalida = new SalidaPutDTO();
+    private List<ProductoGetDTO> productos;
 
     [Parameter]
     public int id { get; set; }
@@ -43,6 +51,7 @@
             editSalida.Cantidad = salida.Cantidad;
             editSalida.Fecha = salida.Fecha;
         }
+        productos = await SalidaService.GetProductosAsync();
     }
 
     private async Task HandleValidSubmit()

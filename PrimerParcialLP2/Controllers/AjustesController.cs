@@ -9,8 +9,6 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using GestionInventarios.Shared.DTOs.Ajuste;
 
-
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
@@ -18,41 +16,67 @@ namespace PrimerParcialLP2.Controllers
     public class AjustesController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
         public AjustesController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
-
+            _mapper = mapper;
         }
 
         // GET: api/Ajustes
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AjusteGetDTO>>> GetAjustes()
         {
-            var ajusteList = await _context.Ajustes.ToListAsync();
-            var ajusteDto = mapper.Map<IEnumerable<AjusteGetDTO>>(ajusteList);
-            return Ok(ajusteDto);
+            var ajusteList = await _context.Ajustes
+                .Include(a => a.Producto)
+                .Include(a => a.Almacen)
+                .Select(a => new AjusteGetDTO
+                {
+                    AjusteId = a.AjusteId,
+                    ProductoId = a.ProductoId,
+                    ProductoNombre = a.Producto.Nombre,
+                    AlmacenId = a.AlmacenId,
+                    AlmacenNombre = a.Almacen.Nombre,
+                    Cantidad = a.Cantidad,
+                    Fecha = a.Fecha,
+                    Tipo = a.Tipo
+                })
+                .ToListAsync();
+
+            return Ok(ajusteList);
         }
 
         // GET: api/Ajustes/5
         [HttpGet("{id}")]
         public async Task<ActionResult<AjusteGetDTO>> GetAjuste(int id)
         {
-            var ajuste = await _context.Ajustes.FindAsync(id);
+            var ajuste = await _context.Ajustes
+                .Include(a => a.Producto)
+                .Include(a => a.Almacen)
+                .Where(a => a.AjusteId == id)
+                .Select(a => new AjusteGetDTO
+                {
+                    AjusteId = a.AjusteId,
+                    ProductoId = a.ProductoId,
+                    ProductoNombre = a.Producto.Nombre,
+                    AlmacenId = a.AlmacenId,
+                    AlmacenNombre = a.Almacen.Nombre,
+                    Cantidad = a.Cantidad,
+                    Fecha = a.Fecha,
+                    Tipo = a.Tipo
+                })
+                .FirstOrDefaultAsync();
 
             if (ajuste == null)
             {
                 return NotFound();
             }
-            var ajusteDto = mapper.Map<AjusteGetDTO>(ajuste);
 
-            return Ok(ajusteDto);
+            return Ok(ajuste);
         }
 
         // PUT: api/Ajustes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAjuste(int id, AjustePutDTO ajusteDto)
         {
@@ -67,8 +91,7 @@ namespace PrimerParcialLP2.Controllers
                 return NotFound();
             }
 
-            // Map the DTO to the existing entity
-            mapper.Map(ajusteDto, ajuste);
+            _mapper.Map(ajusteDto, ajuste);
 
             try
             {
@@ -89,17 +112,13 @@ namespace PrimerParcialLP2.Controllers
             return NoContent();
         }
 
-
-
         // POST: api/Ajustes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Ajuste>> PostAjuste(AjusteInsertDTO ajusteDto)
         {
-            var ajuste = mapper.Map<Ajuste>(ajusteDto);
+            var ajuste = _mapper.Map<Ajuste>(ajusteDto);
             await _context.Ajustes.AddAsync(ajuste);
             await _context.SaveChangesAsync();
-            
 
             return Ok(ajuste.AjusteId);
         }

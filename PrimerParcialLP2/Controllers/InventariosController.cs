@@ -9,8 +9,6 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using GestionInventarios.Shared.DTOs.Inventario;
 
-
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
@@ -18,37 +16,62 @@ namespace PrimerParcialLP2.Controllers
     public class InventariosController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
         public InventariosController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
 
         // GET: api/Inventarios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InventarioGetDTO>>> GetInventarios()
         {
-            var inventarioList = await _context.Inventarios.ToListAsync();
-            var inventarioDto = mapper.Map<IEnumerable<InventarioGetDTO>>(inventarioList);
-            return Ok(inventarioDto);
+            var inventarioList = await _context.Inventarios
+                .Include(i => i.Producto)
+                .Include(i => i.Almacen)
+                .Select(i => new InventarioGetDTO
+                {
+                    InventarioId = i.InventarioId,
+                    ProductoId = i.ProductoId,
+                    ProductoNombre = i.Producto.Nombre, // Nuevo campo
+                    AlmacenId = i.AlmacenId,
+                    AlmacenNombre = i.Almacen.Nombre, // Nuevo campo
+                    Cantidad = i.Cantidad,
+                    Fecha = i.Fecha
+                })
+                .ToListAsync();
+
+            return Ok(inventarioList);
         }
 
         // GET: api/Inventarios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<InventarioGetDTO>> GetInventario(int id)
         {
-            var inventario = await _context.Inventarios.FindAsync(id);
+            var inventario = await _context.Inventarios
+                .Include(i => i.Producto)
+                .Include(i => i.Almacen)
+                .Where(i => i.InventarioId == id)
+                .Select(i => new InventarioGetDTO
+                {
+                    InventarioId = i.InventarioId,
+                    ProductoId = i.ProductoId,
+                    ProductoNombre = i.Producto.Nombre, // Nuevo campo
+                    AlmacenId = i.AlmacenId,
+                    AlmacenNombre = i.Almacen.Nombre, // Nuevo campo
+                    Cantidad = i.Cantidad,
+                    Fecha = i.Fecha
+                })
+                .FirstOrDefaultAsync();
 
             if (inventario == null)
             {
                 return NotFound();
             }
 
-            var inventarioDto = mapper.Map<InventarioGetDTO>(inventario);
-
-            return Ok(inventarioDto);
+            return Ok(inventario);
         }
 
         // PUT: api/Inventarios/5
@@ -66,7 +89,7 @@ namespace PrimerParcialLP2.Controllers
                 return NotFound();
             }
 
-            mapper.Map(inventarioDto, inventario);
+            _mapper.Map(inventarioDto, inventario);
 
             try
             {
@@ -88,11 +111,10 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // POST: api/Inventarios
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Inventario>> PostInventario(InventarioInsertDTO inventarioDto)
         {
-            var inventario = mapper.Map<Inventario>(inventarioDto);
+            var inventario = _mapper.Map<Inventario>(inventarioDto);
             await _context.Inventarios.AddAsync(inventario);
             await _context.SaveChangesAsync();
 

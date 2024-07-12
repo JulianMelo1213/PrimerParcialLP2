@@ -18,29 +18,29 @@ namespace GestionInventario.Client2.Services
 
         public async Task<List<ProductoGetDTO>> GetProductosAsync()
         {
-            return await _httpClient.GetFromJsonAsync<List<ProductoGetDTO>>("api/productoes");
+            return await _httpClient.GetFromJsonAsync<List<ProductoGetDTO>>("api/productos");
         }
 
         public async Task<ProductoGetDTO> GetProductoByIdAsync(int id)
         {
-            return await _httpClient.GetFromJsonAsync<ProductoGetDTO>($"api/productoes/{id}");
+            return await _httpClient.GetFromJsonAsync<ProductoGetDTO>($"api/productos/{id}");
         }
 
         public async Task<bool> CreateProductoAsync(ProductoInsertDTO producto)
         {
-            var response = await _httpClient.PostAsJsonAsync("api/productoes", producto);
+            var response = await _httpClient.PostAsJsonAsync("api/productos", producto);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> UpdateProductoAsync(int id, ProductoPutDTO producto)
         {
-            var response = await _httpClient.PutAsJsonAsync($"api/productoes/{id}", producto);
+            var response = await _httpClient.PutAsJsonAsync($"api/productos/{id}", producto);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<bool> DeleteProductoAsync(int id)
         {
-            var response = await _httpClient.DeleteAsync($"api/productoes/{id}");
+            var response = await _httpClient.DeleteAsync($"api/productos/{id}");
             return response.IsSuccessStatusCode;
         }
     }

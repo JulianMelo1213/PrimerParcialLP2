@@ -3,6 +3,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using GestionInventarios.Shared.DTOs.Salida;
+using GestionInventarios.Shared.DTOs.Producto;
 using GestionInventario.Client2.Services.Salida;
 
 namespace GestionInventario.Client2.Services
@@ -42,6 +43,12 @@ namespace GestionInventario.Client2.Services
         {
             var response = await _httpClient.DeleteAsync($"api/salidums/{id}");
             return response.IsSuccessStatusCode;
+        }
+
+        // Implementación del nuevo método
+        public async Task<List<ProductoGetDTO>> GetProductosAsync()
+        {
+            return await _httpClient.GetFromJsonAsync<List<ProductoGetDTO>>("api/productos");
         }
     }
 }

@@ -9,34 +9,31 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using GestionInventarios.Shared.DTOs.Producto;
 
-
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductoesController : ControllerBase
+    public class ProductosController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
+        private readonly IMapper _mapper;
 
-
-        public ProductoesController(GestionInventariosContext context, IMapper mapper)
+        public ProductosController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
 
-        // GET: api/Productoes
+        // GET: api/Productos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductoGetDTO>>> GetProductos()
         {
             var productoList = await _context.Productos.ToListAsync();
-            var productoDto = mapper.Map<IEnumerable<ProductoGetDTO>>(productoList);
+            var productoDto = _mapper.Map<IEnumerable<ProductoGetDTO>>(productoList);
             return Ok(productoDto);
         }
 
-        // GET: api/Productoes/5
+        // GET: api/Productos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductoGetDTO>> GetProducto(int id)
         {
@@ -47,12 +44,11 @@ namespace PrimerParcialLP2.Controllers
                 return NotFound();
             }
 
-            var productoDto = mapper.Map<ProductoGetDTO>(producto);
-
+            var productoDto = _mapper.Map<ProductoGetDTO>(producto);
             return Ok(productoDto);
         }
 
-        // PUT: api/Productoes/5
+        // PUT: api/Productos/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducto(int id, ProductoPutDTO productoDto)
         {
@@ -67,7 +63,7 @@ namespace PrimerParcialLP2.Controllers
                 return NotFound();
             }
 
-            mapper.Map(productoDto, producto);
+            _mapper.Map(productoDto, producto);
 
             try
             {
@@ -88,19 +84,18 @@ namespace PrimerParcialLP2.Controllers
             return NoContent();
         }
 
-        // POST: api/Productoes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        // POST: api/Productos
         [HttpPost]
         public async Task<ActionResult<Producto>> PostProducto(ProductoInsertDTO productoDto)
         {
-            var producto = mapper.Map<Producto>(productoDto);
+            var producto = _mapper.Map<Producto>(productoDto);
             await _context.Productos.AddAsync(producto);
             await _context.SaveChangesAsync();
 
             return Ok(producto.ProductoId);
         }
 
-        // DELETE: api/Productoes/5
+        // DELETE: api/Productos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProducto(int id)
         {

@@ -43,13 +43,12 @@ namespace PrimerParcialLP2.Controllers
             {
                 return NotFound();
             }
-            var almacenDto = _mapper.Map<AlmacenGetDTO>(almacen);
 
+            var almacenDto = _mapper.Map<AlmacenGetDTO>(almacen);
             return Ok(almacenDto);
         }
 
         // PUT: api/Almacens/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAlmacen(int id, AlmacenPutDTO almacenDto)
         {
@@ -86,7 +85,6 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // POST: api/Almacens
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Almacen>> PostAlmacen(AlmacenInsertDTO almacenDto)
         {

@@ -1,6 +1,7 @@
 ﻿@page "/salidas/create"
 @using GestionInventario.Client2.Services.Salida
 @using GestionInventarios.Shared.DTOs.Salida
+@using GestionInventarios.Shared.DTOs.Producto
 @inject ISalidaService SalidaService
 @inject NavigationManager NavigationManager
 
@@ -12,8 +13,14 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="newSalida.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="newSalida.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -29,6 +36,12 @@
 
 @code {
     private SalidaInsertDTO newSalida = new SalidaInsertDTO();
+    private List<ProductoGetDTO> productos;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productos = await SalidaService.GetProductosAsync();
+    }
 
     private async Task HandleValidSubmit()
     {

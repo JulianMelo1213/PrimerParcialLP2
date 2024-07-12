@@ -1,4 +1,5 @@
 ﻿using GestionInventarios.Shared.DTOs.Entrada;
+using GestionInventarios.Shared.DTOs.Producto;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,5 +12,8 @@ namespace GestionInventario.Client2.Services.Entrada
         Task<bool> CreateEntradaAsync(EntradaInsertDTO entrada);
         Task<bool> UpdateEntradaAsync(int id, EntradaPutDTO entrada);
         Task<bool> DeleteEntradaAsync(int id);
+
+        // Nuevo método
+        Task<List<ProductoGetDTO>> GetProductosAsync();
     }
 }

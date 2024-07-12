@@ -19,8 +19,8 @@
             <thead class="table-dark">
                 <tr>
                     <th>Id</th>
-                    <th>Producto Id</th>
-                    <th>Almacén Id</th>
+                    <th>Producto</th>
+                    <th>Almacén</th>
                     <th>Cantidad</th>
                     <th>Fecha</th>
                     <th>Acciones</th>
@@ -31,8 +31,8 @@
                 {
                     <tr>
                         <td>@inventario.InventarioId</td>
-                        <td>@inventario.ProductoId</td>
-                        <td>@inventario.AlmacenId</td>
+                        <td>@inventario.ProductoNombre</td>
+                        <td>@inventario.AlmacenNombre</td>
                         <td>@inventario.Cantidad</td>
                         <td>@inventario.Fecha.ToShortDateString()</td>
                         <td>

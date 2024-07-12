@@ -1,6 +1,8 @@
 ﻿@page "/inventarios/create"
 @using GestionInventario.Client2.Services.Inventario
 @using GestionInventarios.Shared.DTOs.Inventario
+@using GestionInventarios.Shared.DTOs.Producto
+@using GestionInventarios.Shared.DTOs.Almacen
 @inject IInventarioService InventarioService
 @inject NavigationManager NavigationManager
 
@@ -12,12 +14,24 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="newInventario.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="newInventario.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
-            <label class="form-label">Almacén Id:</label>
-            <InputNumber @bind-Value="newInventario.AlmacenId" class="form-control" />
+            <label class="form-label">Almacén:</label>
+            <InputSelect @bind-Value="newInventario.AlmacenId" class="form-control">
+                <option value="">Seleccione un almacén</option>
+                @foreach (var almacen in almacenes)
+                {
+                    <option value="@almacen.AlmacenId">@almacen.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -33,6 +47,14 @@
 
 @code {
     private InventarioInsertDTO newInventario = new InventarioInsertDTO();
+    private List<ProductoGetDTO> productos;
+    private List<AlmacenGetDTO> almacenes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productos = await InventarioService.GetProductosAsync();
+        almacenes = await InventarioService.GetAlmacenesAsync();
+    }
 
     private async Task HandleValidSubmit()
     {

@@ -1,6 +1,8 @@
 ﻿@page "/inventarios/edit/{id:int}"
 @using GestionInventario.Client2.Services.Inventario
 @using GestionInventarios.Shared.DTOs.Inventario
+@using GestionInventarios.Shared.DTOs.Producto
+@using GestionInventarios.Shared.DTOs.Almacen
 @inject IInventarioService InventarioService
 @inject NavigationManager NavigationManager
 
@@ -12,12 +14,24 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="editInventario.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="editInventario.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
-            <label class="form-label">Almacén Id:</label>
-            <InputNumber @bind-Value="editInventario.AlmacenId" class="form-control" />
+            <label class="form-label">Almacén:</label>
+            <InputSelect @bind-Value="editInventario.AlmacenId" class="form-control">
+                <option value="">Seleccione un almacén</option>
+                @foreach (var almacen in almacenes)
+                {
+                    <option value="@almacen.AlmacenId">@almacen.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -33,6 +47,8 @@
 
 @code {
     private InventarioPutDTO editInventario = new InventarioPutDTO();
+    private List<ProductoGetDTO> productos;
+    private List<AlmacenGetDTO> almacenes;
 
     [Parameter]
     public int id { get; set; }
@@ -48,6 +64,8 @@
             editInventario.Cantidad = inventario.Cantidad;
             editInventario.Fecha = inventario.Fecha;
         }
+        productos = await InventarioService.GetProductosAsync();
+        almacenes = await InventarioService.GetAlmacenesAsync();
     }
 
     private async Task HandleValidSubmit()

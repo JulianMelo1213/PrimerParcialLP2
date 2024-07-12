@@ -27,24 +27,44 @@ namespace PrimerParcialLP2.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EntradaGetDTO>>> GetEntrada()
         {
-            var entradaList = await _context.Entrada.ToListAsync();
-            var entradaDto = _mapper.Map<IEnumerable<EntradaGetDTO>>(entradaList);
-            return Ok(entradaDto);
+            var entradaList = await _context.Entrada
+                .Include(e => e.Producto)
+                .Select(e => new EntradaGetDTO
+                {
+                    EntradaId = e.EntradaId,
+                    ProductoId = e.ProductoId,
+                    ProductoNombre = e.Producto.Nombre, // Nuevo campo
+                    Cantidad = e.Cantidad,
+                    Fecha = e.Fecha
+                })
+                .ToListAsync();
+
+            return Ok(entradaList);
         }
 
         // GET: api/Entradums/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EntradaGetDTO>> GetEntradum(int id)
         {
-            var entrada = await _context.Entrada.FindAsync(id);
+            var entrada = await _context.Entrada
+                .Include(e => e.Producto)
+                .Where(e => e.EntradaId == id)
+                .Select(e => new EntradaGetDTO
+                {
+                    EntradaId = e.EntradaId,
+                    ProductoId = e.ProductoId,
+                    ProductoNombre = e.Producto.Nombre, // Nuevo campo
+                    Cantidad = e.Cantidad,
+                    Fecha = e.Fecha
+                })
+                .FirstOrDefaultAsync();
 
             if (entrada == null)
             {
                 return NotFound();
             }
-            var entradaDto = _mapper.Map<EntradaGetDTO>(entrada);
 
-            return Ok(entradaDto);
+            return Ok(entrada);
         }
 
         // PUT: api/Entradums/5

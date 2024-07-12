@@ -9,7 +9,6 @@ using PrimerParcialLP2.Models;
 using AutoMapper;
 using GestionInventarios.Shared.DTOs.Salida;
 
-
 namespace PrimerParcialLP2.Controllers
 {
     [Route("api/[controller]")]
@@ -17,42 +16,61 @@ namespace PrimerParcialLP2.Controllers
     public class SalidumsController : ControllerBase
     {
         private readonly GestionInventariosContext _context;
-        private readonly IMapper mapper;
-
+        private readonly IMapper _mapper;
 
         public SalidumsController(GestionInventariosContext context, IMapper mapper)
         {
             _context = context;
-            this.mapper = mapper;
+            _mapper = mapper;
         }
 
         // GET: api/Salidums
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SalidaGetDTO>>> GetSalida()
+        public async Task<ActionResult<IEnumerable<SalidaGetDTO>>> GetSalidas()
         {
-            var salidaList = await _context.Salida.ToListAsync();
-            var salidaDto = mapper.Map<IEnumerable<SalidaGetDTO>>(salidaList);
-            return Ok(salidaDto);
+            var salidaList = await _context.Salida
+                .Include(s => s.Producto)
+                .Select(s => new SalidaGetDTO
+                {
+                    SalidaId = s.SalidaId,
+                    ProductoId = s.ProductoId,
+                    ProductoNombre = s.Producto.Nombre, // Nuevo campo
+                    Cantidad = s.Cantidad,
+                    Fecha = s.Fecha
+                })
+                .ToListAsync();
+
+            return Ok(salidaList);
         }
 
         // GET: api/Salidums/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SalidaGetDTO>> GetSalidum(int id)
+        public async Task<ActionResult<SalidaGetDTO>> GetSalida(int id)
         {
-            var salida = await _context.Salida.FindAsync(id);
+            var salida = await _context.Salida
+                .Include(s => s.Producto)
+                .Where(s => s.SalidaId == id)
+                .Select(s => new SalidaGetDTO
+                {
+                    SalidaId = s.SalidaId,
+                    ProductoId = s.ProductoId,
+                    ProductoNombre = s.Producto.Nombre, // Nuevo campo
+                    Cantidad = s.Cantidad,
+                    Fecha = s.Fecha
+                })
+                .FirstOrDefaultAsync();
 
             if (salida == null)
             {
                 return NotFound();
             }
-            var salidaDto = mapper.Map<SalidaGetDTO>(salida);
 
-            return Ok(salidaDto);
+            return Ok(salida);
         }
 
         // PUT: api/Salidums/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSalidum(int id, SalidaPutDTO salidaDto)
+        public async Task<IActionResult> PutSalida(int id, SalidaPutDTO salidaDto)
         {
             if (id != salidaDto.SalidaId)
             {
@@ -65,7 +83,7 @@ namespace PrimerParcialLP2.Controllers
                 return NotFound();
             }
 
-            mapper.Map(salidaDto, salida);
+            _mapper.Map(salidaDto, salida);
 
             try
             {
@@ -73,7 +91,7 @@ namespace PrimerParcialLP2.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SalidumExists(id))
+                if (!SalidaExists(id))
                 {
                     return NotFound();
                 }
@@ -87,11 +105,10 @@ namespace PrimerParcialLP2.Controllers
         }
 
         // POST: api/Salidums
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Salidum>> PostSalidum(SalidaInsertDTO salidaDto)
+        public async Task<ActionResult<Salidum>> PostSalida(SalidaInsertDTO salidaDto)
         {
-            var salida = mapper.Map<Salidum>(salidaDto);
+            var salida = _mapper.Map<Salidum>(salidaDto);
             await _context.Salida.AddAsync(salida);
             await _context.SaveChangesAsync();
 
@@ -100,21 +117,21 @@ namespace PrimerParcialLP2.Controllers
 
         // DELETE: api/Salidums/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSalidum(int id)
+        public async Task<IActionResult> DeleteSalida(int id)
         {
-            var salidum = await _context.Salida.FindAsync(id);
-            if (salidum == null)
+            var salida = await _context.Salida.FindAsync(id);
+            if (salida == null)
             {
                 return NotFound();
             }
 
-            _context.Salida.Remove(salidum);
+            _context.Salida.Remove(salida);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool SalidumExists(int id)
+        private bool SalidaExists(int id)
         {
             return _context.Salida.Any(e => e.SalidaId == id);
         }

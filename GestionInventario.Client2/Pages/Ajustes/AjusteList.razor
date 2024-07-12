@@ -1,13 +1,15 @@
 ﻿@page "/ajustes"
 @using GestionInventario.Client2.Services.Ajuste
 @using GestionInventarios.Shared.DTOs.Ajuste
+@using GestionInventarios.Shared.DTOs.Producto
+@using GestionInventarios.Shared.DTOs.Almacen
 @inject IAjusteServicio AjusteService
 @inject NavigationManager NavigationManager
 
 <div class="container mt-4">
     <h3 class="mb-4">Ajustes</h3>
 
-    @if (ajustes == null)
+    @if (ajustes == null || productos == null || almacenes == null)
     {
         <div class="alert alert-info" role="alert">
             <strong>Cargando...</strong>
@@ -19,8 +21,8 @@
             <thead class="table-dark">
                 <tr>
                     <th>Id</th>
-                    <th>Producto Id</th>
-                    <th>Almacen Id</th>
+                    <th>Producto</th>
+                    <th>Almacen</th>
                     <th>Cantidad</th>
                     <th>Fecha</th>
                     <th>Tipo</th>
@@ -32,8 +34,8 @@
                 {
                     <tr>
                         <td>@ajuste.AjusteId</td>
-                        <td>@ajuste.ProductoId</td>
-                        <td>@ajuste.AlmacenId</td>
+                        <td>@productos.FirstOrDefault(p => p.ProductoId == ajuste.ProductoId)?.Nombre</td>
+                        <td>@almacenes.FirstOrDefault(a => a.AlmacenId == ajuste.AlmacenId)?.Nombre</td>
                         <td>@ajuste.Cantidad</td>
                         <td>@ajuste.Fecha.ToShortDateString()</td>
                         <td>@ajuste.Tipo</td>
@@ -51,10 +53,14 @@
 
 @code {
     private List<AjusteGetDTO> ajustes;
+    private List<ProductoGetDTO> productos;
+    private List<AlmacenGetDTO> almacenes;
 
     protected override async Task OnInitializedAsync()
     {
         ajustes = await AjusteService.GetAjustesAsync();
+        productos = await AjusteService.GetProductosAsync();
+        almacenes = await AjusteService.GetAlmacenesAsync();
     }
 
     private void CreateAjuste()

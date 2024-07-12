@@ -1,6 +1,8 @@
 ﻿@page "/ajustes/create"
 @using GestionInventario.Client2.Services.Ajuste
 @using GestionInventarios.Shared.DTOs.Ajuste
+@using GestionInventarios.Shared.DTOs.Producto
+@using GestionInventarios.Shared.DTOs.Almacen
 @inject IAjusteServicio AjusteService
 @inject NavigationManager NavigationManager
 
@@ -12,12 +14,24 @@
         <ValidationSummary />
 
         <div class="mb-3">
-            <label class="form-label">Producto Id:</label>
-            <InputNumber @bind-Value="newAjuste.ProductoId" class="form-control" />
+            <label class="form-label">Producto:</label>
+            <InputSelect @bind-Value="newAjuste.ProductoId" class="form-control">
+                <option value="">Seleccione un producto</option>
+                @foreach (var producto in productos)
+                {
+                    <option value="@producto.ProductoId">@producto.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
-            <label class="form-label">Almacen Id:</label>
-            <InputNumber @bind-Value="newAjuste.AlmacenId" class="form-control" />
+            <label class="form-label">Almacen:</label>
+            <InputSelect @bind-Value="newAjuste.AlmacenId" class="form-control">
+                <option value="">Seleccione un almacen</option>
+                @foreach (var almacen in almacenes)
+                {
+                    <option value="@almacen.AlmacenId">@almacen.Nombre</option>
+                }
+            </InputSelect>
         </div>
         <div class="mb-3">
             <label class="form-label">Cantidad:</label>
@@ -37,6 +51,14 @@
 
 @code {
     private AjusteInsertDTO newAjuste = new AjusteInsertDTO();
+    private List<ProductoGetDTO> productos;
+    private List<AlmacenGetDTO> almacenes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        productos = await AjusteService.GetProductosAsync();
+        almacenes = await AjusteService.GetAlmacenesAsync();
+    }
 
     private async Task HandleValidSubmit()
     {
