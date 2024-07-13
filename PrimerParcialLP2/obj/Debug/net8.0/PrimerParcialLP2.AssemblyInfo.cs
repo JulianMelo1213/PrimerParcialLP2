@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrimerParcialLP2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+663feb162cfde7a90420e9cb54f3adec58f61fa9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb86400e2838526fa74370e364bf8dc82094782d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrimerParcialLP2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrimerParcialLP2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

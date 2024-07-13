@@ -1,84 +1,134 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using PrimerParcialLP2.Controllers;
 using GestionInventarios.Shared.DTOs.Salida;
 using PrimerParcialLP2.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
-
-public class SalidumsControllerTests
+public class SalidumsControllerTests : IDisposable
 {
-    private readonly IMapper _mapper;
     private readonly SalidumsController _controller;
-    private readonly Mock<GestionInventariosContext> _mockContext;
+    private readonly DbTestFixture<GestionInventariosContext> _fixture;
 
     public SalidumsControllerTests()
     {
-        // Configurar AutoMapper
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));
-        _mapper = new Mapper(configuration);
+        _fixture = new DbTestFixture<GestionInventariosContext>();
+        _controller = new SalidumsController(_fixture.Context, _fixture.Mapper);
+    }
 
-        // Crear datos de ejemplo
+    public void Dispose()
+    {
+        _fixture.Dispose();
+    }
+
+    [Fact]
+    public void Setup()
+    {
         var salidas = new List<Salidum>
         {
-            new Salidum { SalidaId = 1, ProductoId = 1, Cantidad = 5, Fecha = DateTime.Now }
+            new Salidum
+            {
+                SalidaId = 1,
+                ProductoId = 1,
+                Producto = new Producto { ProductoId = 1, Nombre = "Producto A" },
+                Cantidad = 5,
+                Fecha = DateTime.Now
+            },
+            new Salidum
+            {
+                SalidaId = 2,
+                ProductoId = 2,
+                Producto = new Producto { ProductoId = 2, Nombre = "Producto B" },
+                Cantidad = 10,
+                Fecha = DateTime.Now
+            }
         };
-
-        // Obtener el contexto mock
-        _mockContext = MockDbContextHelper.GetMockContext(salidas);
-
-        // Crear instancia del controlador
-        _controller = new SalidumsController(_mockContext.Object, _mapper);
+        _fixture.Context.Salida.AddRange(salidas);
+        _fixture.Context.SaveChanges();
     }
 
     [Fact]
-    public async Task GetSalidum_ReturnsOkResult_WithSalidaGetDTO()
+    public async Task GetSalida_ReturnsOkResult_WithSalidaGetDTO()
     {
-        var salidaId = 1;
-        var salida = new Salidum { SalidaId = salidaId, ProductoId = 1, Cantidad = 5, Fecha = DateTime.Now };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Salida.FindAsync(salidaId)).ReturnsAsync(salida);
+        // Act
+        var result = await _controller.GetSalida(1);
 
-        var result = await _controller.GetSalidum(salidaId);
-
+        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<SalidaGetDTO>(okResult.Value);
-        Assert.Equal(salidaId, returnValue.SalidaId);
+        Assert.Equal(1, returnValue.SalidaId);
+        Assert.Equal("Producto A", returnValue.ProductoNombre);
     }
 
     [Fact]
-    public async Task PutSalidum_ReturnsNoContentResult_WhenSalidaExists()
+    public async Task GetSalidas_ReturnsOkResult()
     {
-        var salidaId = 1;
-        var salidaPutDTO = new SalidaPutDTO { SalidaId = salidaId, ProductoId = 1, Cantidad = 10, Fecha = DateTime.Now };
-        var salida = new Salidum { SalidaId = salidaId, ProductoId = 1, Cantidad = 5, Fecha = DateTime.Now };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Salida.FindAsync(salidaId)).ReturnsAsync(salida);
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.GetSalidas();
 
-        var result = await _controller.PutSalidum(salidaId, salidaPutDTO);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<List<SalidaGetDTO>>(okResult.Value);
+        Assert.Equal(2, returnValue.Count);
+    }
 
+    [Fact]
+    public async Task PostSalida_ReturnsOkObjectResult()
+    {
+        // Arrange
+        var salidaInsertDTO = new SalidaInsertDTO { ProductoId = 2, Cantidad = 10, Fecha = DateTime.Now };
+
+        // Act
+        var result = await _controller.PostSalida(salidaInsertDTO);
+
+        // Assert
+        var okObjectResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<int>(okObjectResult.Value);
+
+        // Verify that the ID is valid
+        Assert.True(returnValue > 0);
+
+        // Verify that the entity was added to the database
+        var addedEntry = await _fixture.Context.Salida.FindAsync(returnValue);
+        Assert.NotNull(addedEntry);
+        Assert.Equal(salidaInsertDTO.ProductoId, addedEntry.ProductoId);
+        Assert.Equal(salidaInsertDTO.Cantidad, addedEntry.Cantidad);
+        Assert.Equal(salidaInsertDTO.Fecha, addedEntry.Fecha);
+    }
+
+    [Fact]
+    public async Task PutSalida_ReturnsNoContentResult_WhenSalidaExists()
+    {
+        // Arrange
+        Setup();
+        var salidaPutDTO = new SalidaPutDTO { SalidaId = 1, ProductoId = 1, Cantidad = 10, Fecha = DateTime.Now };
+
+        // Act
+        var result = await _controller.PutSalida(1, salidaPutDTO);
+
+        // Assert
         Assert.IsType<NoContentResult>(result);
     }
 
     [Fact]
-    public async Task PostSalidum_ReturnsOkObjectResult()
+    public async Task DeleteSalida_ReturnsNoContent_WithValidId()
     {
-        var salidaInsertDTO = new SalidaInsertDTO { ProductoId = 2, Cantidad = 10, Fecha = DateTime.Now };
-        var salida = _mapper.Map<Salidum>(salidaInsertDTO);
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Salida.Add(It.IsAny<Salidum>()));
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.DeleteSalida(1);
 
-        var result = await _controller.PostSalidum(salidaInsertDTO);
-
-        var okResult = Assert.IsType<OkObjectResult>(result.Result);
-        var returnValue = Assert.IsType<int>(okResult.Value);
-        Assert.Equal(salida.SalidaId, returnValue);
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }

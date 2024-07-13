@@ -1,84 +1,118 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using PrimerParcialLP2.Controllers;
 using GestionInventarios.Shared.DTOs.Categoria;
 using PrimerParcialLP2.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
-
-public class CategoriumsControllerTests
+public class CategoriumsControllerTests : IDisposable
 {
-    private readonly IMapper _mapper;
     private readonly CategoriumsController _controller;
-    private readonly Mock<GestionInventariosContext> _mockContext;
+    private readonly DbTestFixture<GestionInventariosContext> _fixture;
 
     public CategoriumsControllerTests()
     {
-        // Configurar AutoMapper
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));
-        _mapper = new Mapper(configuration);
+        _fixture = new DbTestFixture<GestionInventariosContext>();
+        _controller = new CategoriumsController(_fixture.Context, _fixture.Mapper);
+    }
 
-        // Crear datos de ejemplo
+    public void Dispose()
+    {
+        _fixture.Dispose();
+    }
+
+    [Fact]
+    public void Setup()
+    {
         var categorias = new List<Categorium>
         {
-            new Categorium { CategoriaId = 1, Nombre = "Categoría A" }
+            new Categorium { CategoriaId = 1, Nombre = "Categoría A" },
+            new Categorium { CategoriaId = 2, Nombre = "Categoría B" }
         };
-
-        // Obtener el contexto mock
-        _mockContext = MockDbContextHelper.GetMockContext(categorias);
-
-        // Crear instancia del controlador
-        _controller = new CategoriumsController(_mockContext.Object, _mapper);
+        _fixture.Context.Categoria.AddRange(categorias);
+        _fixture.Context.SaveChanges();
     }
 
     [Fact]
     public async Task GetCategorium_ReturnsOkResult_WithCategoriaGetDTO()
     {
-        var categoriaId = 1;
-        var categoria = new Categorium { CategoriaId = categoriaId, Nombre = "Categoría A" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Categoria.FindAsync(categoriaId)).ReturnsAsync(categoria);
+        // Act
+        var result = await _controller.GetCategorium(1);
 
-        var result = await _controller.GetCategorium(categoriaId);
-
+        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<CategoriaGetDTO>(okResult.Value);
-        Assert.Equal(categoriaId, returnValue.CategoriaId);
+        Assert.Equal(1, returnValue.CategoriaId);
+        Assert.Equal("Categoría A", returnValue.Nombre);
     }
 
     [Fact]
-    public async Task PutCategorium_ReturnsNoContentResult_WhenCategoriaExists()
+    public async Task GetCategoria_ReturnsOkResult()
     {
-        var categoriaId = 1;
-        var categoriaPutDTO = new CategoriaPutDTO { CategoriaId = categoriaId, Nombre = "Categoría B" };
-        var categoria = new Categorium { CategoriaId = categoriaId, Nombre = "Categoría A" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Categoria.FindAsync(categoriaId)).ReturnsAsync(categoria);
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.GetCategoria();
 
-        var result = await _controller.PutCategorium(categoriaId, categoriaPutDTO);
-
-        Assert.IsType<NoContentResult>(result);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<List<CategoriaGetDTO>>(okResult.Value);
+        Assert.Equal(2, returnValue.Count);
     }
 
     [Fact]
     public async Task PostCategorium_ReturnsOkObjectResult()
     {
+        // Arrange
         var categoriaInsertDTO = new CategoriaInsertDTO { Nombre = "Categoría C" };
-        var categoria = _mapper.Map<Categorium>(categoriaInsertDTO);
 
-        _mockContext.Setup(ctx => ctx.Categoria.Add(It.IsAny<Categorium>()));
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
-
+        // Act
         var result = await _controller.PostCategorium(categoriaInsertDTO);
 
+        // Assert
         var okObjectResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<int>(okObjectResult.Value);
-        Assert.Equal(categoria.CategoriaId, returnValue);
+
+        // Verify that the ID is valid
+        Assert.True(returnValue > 0);
+
+        // Verify that the entity was added to the database
+        var addedEntry = await _fixture.Context.Categoria.FindAsync(returnValue);
+        Assert.NotNull(addedEntry);
+        Assert.Equal(categoriaInsertDTO.Nombre, addedEntry.Nombre);
+    }
+
+    [Fact]
+    public async Task PutCategorium_ReturnsNoContentResult_WhenCategoriaExists()
+    {
+        // Arrange
+        Setup();
+        var categoriaPutDTO = new CategoriaPutDTO { CategoriaId = 1, Nombre = "Categoría B" };
+
+        // Act
+        var result = await _controller.PutCategorium(1, categoriaPutDTO);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public async Task DeleteCategorium_ReturnsNoContent_WithValidId()
+    {
+        // Arrange
+        Setup();
+
+        // Act
+        var result = await _controller.DeleteCategorium(1);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }

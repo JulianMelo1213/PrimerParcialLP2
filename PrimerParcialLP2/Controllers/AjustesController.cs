@@ -54,26 +54,16 @@ namespace PrimerParcialLP2.Controllers
             var ajuste = await _context.Ajustes
                 .Include(a => a.Producto)
                 .Include(a => a.Almacen)
-                .Where(a => a.AjusteId == id)
-                .Select(a => new AjusteGetDTO
-                {
-                    AjusteId = a.AjusteId,
-                    ProductoId = a.ProductoId,
-                    ProductoNombre = a.Producto.Nombre,
-                    AlmacenId = a.AlmacenId,
-                    AlmacenNombre = a.Almacen.Nombre,
-                    Cantidad = a.Cantidad,
-                    Fecha = a.Fecha,
-                    Tipo = a.Tipo
-                })
-                .FirstOrDefaultAsync();
+                .FirstOrDefaultAsync(a => a.AjusteId == id);
 
             if (ajuste == null)
             {
                 return NotFound();
             }
 
-            return Ok(ajuste);
+            var ajusteDTO = _mapper.Map<AjusteGetDTO>(ajuste);
+
+            return Ok(ajusteDTO);
         }
 
         // PUT: api/Ajustes/5

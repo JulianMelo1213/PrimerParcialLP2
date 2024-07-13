@@ -1,84 +1,119 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using PrimerParcialLP2.Controllers;
 using GestionInventarios.Shared.DTOs.Almacen;
 using PrimerParcialLP2.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
-
-public class AlmacensControllerTests
+public class AlmacensControllerTests : IDisposable
 {
-    private readonly IMapper _mapper;
     private readonly AlmacensController _controller;
-    private readonly Mock<GestionInventariosContext> _mockContext;
+    private readonly DbTestFixture<GestionInventariosContext> _fixture;
 
     public AlmacensControllerTests()
     {
-        // Configurar AutoMapper
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));
-        _mapper = new Mapper(configuration);
+        _fixture = new DbTestFixture<GestionInventariosContext>();
+        _controller = new AlmacensController(_fixture.Context, _fixture.Mapper);
+    }
 
-        // Crear datos de ejemplo
+    public void Dispose()
+    {
+        _fixture.Dispose();
+    }
+
+    [Fact]
+    public void Setup()
+    {
         var almacens = new List<Almacen>
         {
-            new Almacen { AlmacenId = 1, Nombre = "Almacen A", Ubicacion = "Direccion A" }
+            new Almacen { AlmacenId = 1, Nombre = "Almacen A", Ubicacion = "Direccion A" },
+            new Almacen { AlmacenId = 2, Nombre = "Almacen B", Ubicacion = "Direccion B" }
         };
-
-        // Obtener el contexto mock
-        _mockContext = MockDbContextHelper.GetMockContext(almacens);
-
-        // Crear instancia del controlador
-        _controller = new AlmacensController(_mockContext.Object, _mapper);
+        _fixture.Context.Almacen.AddRange(almacens);
+        _fixture.Context.SaveChanges();
     }
 
     [Fact]
     public async Task GetAlmacen_ReturnsOkResult_WithAlmacenGetDTO()
     {
-        var almacenId = 1;
-        var almacen = new Almacen { AlmacenId = almacenId, Nombre = "Almacen A", Ubicacion = "Direccion A" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Almacen.FindAsync(almacenId)).ReturnsAsync(almacen);
+        // Act
+        var result = await _controller.GetAlmacen(1);
 
-        var result = await _controller.GetAlmacen(almacenId);
-
+        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<AlmacenGetDTO>(okResult.Value);
-        Assert.Equal(almacenId, returnValue.AlmacenId);
+        Assert.Equal(1, returnValue.AlmacenId);
+        Assert.Equal("Almacen A", returnValue.Nombre);
     }
 
     [Fact]
-    public async Task PutAlmacen_ReturnsNoContentResult_WhenAlmacenExists()
+    public async Task GetAlmacens_ReturnsOkResult()
     {
-        var almacenId = 1;
-        var almacenPutDTO = new AlmacenPutDTO { AlmacenId = almacenId, Nombre = "Almacen B", Ubicacion = "Direccion B" };
-        var almacen = new Almacen { AlmacenId = almacenId, Nombre = "Almacen A", Ubicacion = "Direccion A" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Almacen.FindAsync(almacenId)).ReturnsAsync(almacen);
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.GetAlmacens();
 
-        var result = await _controller.PutAlmacen(almacenId, almacenPutDTO);
-
-        Assert.IsType<NoContentResult>(result);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<List<AlmacenGetDTO>>(okResult.Value);
+        Assert.Equal(2, returnValue.Count);
     }
 
     [Fact]
     public async Task PostAlmacen_ReturnsOkObjectResult()
     {
+        // Arrange
         var almacenInsertDTO = new AlmacenInsertDTO { Nombre = "Almacen C", Ubicacion = "Direccion C" };
-        var almacen = _mapper.Map<Almacen>(almacenInsertDTO);
 
-        _mockContext.Setup(ctx => ctx.Almacen.Add(It.IsAny<Almacen>()));
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
-
+        // Act
         var result = await _controller.PostAlmacen(almacenInsertDTO);
 
+        // Assert
         var okObjectResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<int>(okObjectResult.Value);
-        Assert.Equal(almacen.AlmacenId, returnValue);
+
+        // Verify that the ID is valid
+        Assert.True(returnValue > 0);
+
+        // Verify that the entity was added to the database
+        var addedEntry = await _fixture.Context.Almacen.FindAsync(returnValue);
+        Assert.NotNull(addedEntry);
+        Assert.Equal(almacenInsertDTO.Nombre, addedEntry.Nombre);
+        Assert.Equal(almacenInsertDTO.Ubicacion, addedEntry.Ubicacion);
+    }
+
+    [Fact]
+    public async Task PutAlmacen_ReturnsNoContentResult_WhenAlmacenExists()
+    {
+        // Arrange
+        Setup();
+        var almacenPutDTO = new AlmacenPutDTO { AlmacenId = 1, Nombre = "Almacen B", Ubicacion = "Direccion B" };
+
+        // Act
+        var result = await _controller.PutAlmacen(1, almacenPutDTO);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public async Task DeleteAlmacen_ReturnsNoContent_WithValidId()
+    {
+        // Arrange
+        Setup();
+
+        // Act
+        var result = await _controller.DeleteAlmacen(1);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }

@@ -647,3 +647,10 @@ C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\GestionInventarios.IntegrationTests.pdb
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\GestionInventarios.IntegrationTests.genruntimeconfig.cache
 C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\obj\Debug\net8.0\ref\GestionInventarios.IntegrationTests.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\gusta\source\repos\PrimerParcialLP2\GestionInventarios.IntegrationTests\bin\Debug\net8.0\Microsoft.Extensions.Options.dll

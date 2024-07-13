@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using PrimerParcialLP2.Models;
-
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using System.Text;
 public class Program
 {
     public static void Main(string[] args)
@@ -17,6 +20,49 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddAutoMapper(typeof(Program));
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+        // Configurar Identity
+        builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<GestionInventariosContext>()
+            .AddDefaultTokenProviders();
+
+        // Configurar JWT
+        var key = Encoding.ASCII.GetBytes(builder.Configuration["JWT:SigningKey"]);
+        builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        })
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8
+                    .GetBytes(builder.Configuration["JWT:SigningKey"])
+                    )
+            };
+        });
+
+        // Agregar autorización
+        builder.Services.AddAuthorization(options =>
+        {
+            options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+        });
+
+        /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
         builder.Services.AddCors(opciones =>
         {

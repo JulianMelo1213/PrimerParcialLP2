@@ -1,85 +1,122 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using PrimerParcialLP2.Controllers;
 using GestionInventarios.Shared.DTOs.Proveedor;
 using PrimerParcialLP2.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
-
-public class ProveedorsControllerTests
+public class ProveedorsControllerTests : IDisposable
 {
-    private readonly IMapper _mapper;
     private readonly ProveedorsController _controller;
-    private readonly Mock<GestionInventariosContext> _mockContext;
+    private readonly DbTestFixture<GestionInventariosContext> _fixture;
 
     public ProveedorsControllerTests()
     {
-        // Configurar AutoMapper
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));
-        _mapper = new Mapper(configuration);
-
-        // Crear datos de ejemplo
-        var proveedores = new List<Proveedor>
-        {
-            new Proveedor { ProveedorId = 1, Nombre = "Proveedor A", Direccion = "Direccion A" }
-        };
-
-        // Obtener el contexto mock
-        _mockContext = MockDbContextHelper.GetMockContext(proveedores);
-
-        // Crear instancia del controlador
-        _controller = new ProveedorsController(_mockContext.Object, _mapper);
+        _fixture = new DbTestFixture<GestionInventariosContext>();
+        _controller = new ProveedorsController(_fixture.Context, _fixture.Mapper);
     }
 
+    public void Dispose()
+    {
+        _fixture.Dispose();
+    }
+
+    [Fact]
+    public void Setup()
+    {
+        var proveedores = new List<Proveedor>
+        {
+            new Proveedor { ProveedorId = 1, Nombre = "Proveedor A", Direccion = "Direccion A", Telefono = "12222222" },
+            new Proveedor { ProveedorId = 2, Nombre = "Proveedor B", Direccion = "Direccion B", Telefono = "13333333" }
+        };
+        _fixture.Context.Proveedors.AddRange(proveedores);
+        _fixture.Context.SaveChanges();
+    }
 
     [Fact]
     public async Task GetProveedor_ReturnsOkResult_WithProveedorGetDTO()
     {
-        var proveedorId = 1;
-        var proveedor = new Proveedor { ProveedorId = proveedorId, Nombre = "Proveedor A", Direccion = "Direccion A" , Telefono = "12222222" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Proveedors.FindAsync(proveedorId)).ReturnsAsync(proveedor);
+        // Act
+        var result = await _controller.GetProveedor(1);
 
-        var result = await _controller.GetProveedor(proveedorId);
-
+        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<ProveedorGetDTO>(okResult.Value);
-        Assert.Equal(proveedorId, returnValue.ProveedorId);
+        Assert.Equal(1, returnValue.ProveedorId);
+        Assert.Equal("Proveedor A", returnValue.Nombre);
+        Assert.Equal("Direccion A", returnValue.Direccion);
+        Assert.Equal("12222222", returnValue.Telefono);
     }
 
     [Fact]
-    public async Task PutProveedor_ReturnsNoContentResult_WhenProveedorExists()
+    public async Task GetProveedors_ReturnsOkResult()
     {
-        var proveedorId = 1;
-        var proveedorPutDTO = new ProveedorPutDTO { ProveedorId = proveedorId, Nombre = "Proveedor B", Direccion = "Direccion B", Telefono = "12222222" };
-        var proveedor = new Proveedor { ProveedorId = proveedorId, Nombre = "Proveedor A", Direccion = "Direccion A", Telefono = "12222222" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Proveedors.FindAsync(proveedorId)).ReturnsAsync(proveedor);
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.GetProveedors();
 
-        var result = await _controller.PutProveedor(proveedorId, proveedorPutDTO);
-
-        Assert.IsType<NoContentResult>(result);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<List<ProveedorGetDTO>>(okResult.Value);
+        Assert.Equal(2, returnValue.Count);
     }
 
     [Fact]
     public async Task PostProveedor_ReturnsOkObjectResult()
     {
-        var proveedorInsertDTO = new ProveedorInsertDTO { Nombre = "Proveedor C", Direccion = "Direccion C", Telefono = "12222222" };
-        var proveedor = _mapper.Map<Proveedor>(proveedorInsertDTO);
+        // Arrange
+        var proveedorInsertDTO = new ProveedorInsertDTO { Nombre = "Proveedor C", Direccion = "Direccion C", Telefono = "14444444" };
 
-        _mockContext.Setup(ctx => ctx.Proveedors.Add(It.IsAny<Proveedor>()));
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
-
+        // Act
         var result = await _controller.PostProveedor(proveedorInsertDTO);
 
+        // Assert
         var okObjectResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<int>(okObjectResult.Value);
-        Assert.Equal(proveedor.ProveedorId, returnValue);
+
+        // Verify that the ID is valid
+        Assert.True(returnValue > 0);
+
+        // Verify that the entity was added to the database
+        var addedEntry = await _fixture.Context.Proveedors.FindAsync(returnValue);
+        Assert.NotNull(addedEntry);
+        Assert.Equal(proveedorInsertDTO.Nombre, addedEntry.Nombre);
+        Assert.Equal(proveedorInsertDTO.Direccion, addedEntry.Direccion);
+        Assert.Equal(proveedorInsertDTO.Telefono, addedEntry.Telefono);
+    }
+
+    [Fact]
+    public async Task PutProveedor_ReturnsNoContentResult_WhenProveedorExists()
+    {
+        // Arrange
+        Setup();
+        var proveedorPutDTO = new ProveedorPutDTO { ProveedorId = 1, Nombre = "Proveedor B", Direccion = "Direccion B", Telefono = "15555555" };
+
+        // Act
+        var result = await _controller.PutProveedor(1, proveedorPutDTO);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public async Task DeleteProveedor_ReturnsNoContent_WithValidId()
+    {
+        // Arrange
+        Setup();
+
+        // Act
+        var result = await _controller.DeleteProveedor(1);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }

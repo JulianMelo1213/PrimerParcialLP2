@@ -1,84 +1,144 @@
-﻿using AutoMapper;
-using Moq;
+﻿using Microsoft.AspNetCore.Mvc;
 using PrimerParcialLP2.Controllers;
 using GestionInventarios.Shared.DTOs.Ajuste;
 using PrimerParcialLP2.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using PrimerParcialLP2;
+using System.Linq;
+using System.Threading.Tasks;
+using System;
 
-
-public class AjustesControllerTests
+public class AjustesControllerTests : IDisposable
 {
-    private readonly IMapper _mapper;
     private readonly AjustesController _controller;
-    private readonly Mock<GestionInventariosContext> _mockContext;
+    private readonly DbTestFixture<GestionInventariosContext> _fixture;
 
     public AjustesControllerTests()
     {
-        // Configurar AutoMapper
-        var configuration = new MapperConfiguration(cfg => cfg.AddProfile(new MappingProfile()));
-        _mapper = new Mapper(configuration);
+        _fixture = new DbTestFixture<GestionInventariosContext>();
+        _controller = new AjustesController(_fixture.Context, _fixture.Mapper);
+    }
 
-        // Crear datos de ejemplo
+    public void Dispose()
+    {
+        _fixture.Dispose();
+    }
+
+    [Fact]
+    public void Setup()
+    {
         var ajustes = new List<Ajuste>
         {
-            new Ajuste { AjusteId = 1, ProductoId = 1, AlmacenId = 1, Cantidad = 10, Fecha = DateTime.Now, Tipo = "Incremento" }
+            new Ajuste
+            {
+                AjusteId = 1,
+                ProductoId = 1,
+                Producto = new Producto { ProductoId = 1, Nombre = "Producto A" },
+                AlmacenId = 1,
+                Almacen = new Almacen { AlmacenId = 1, Nombre = "Almacen A" },
+                Cantidad = 10,
+                Fecha = DateTime.Now,
+                Tipo = "Incremento"
+            },
+            new Ajuste
+            {
+                AjusteId = 2,
+                ProductoId = 2,
+                Producto = new Producto { ProductoId = 2, Nombre = "Producto B" },
+                AlmacenId = 2,
+                Almacen = new Almacen { AlmacenId = 2, Nombre = "Almacen B" },
+                Cantidad = 20,
+                Fecha = DateTime.Now,
+                Tipo = "Decremento"
+            }
         };
-
-        // Obtener el contexto mock
-        _mockContext = MockDbContextHelper.GetMockContext(ajustes);
-
-        // Crear instancia del controlador
-        _controller = new AjustesController(_mockContext.Object, _mapper);
+        _fixture.Context.Ajustes.AddRange(ajustes);
+        _fixture.Context.SaveChanges();
     }
 
     [Fact]
     public async Task GetAjuste_ReturnsOkResult_WithAjusteGetDTO()
     {
-        var ajusteId = 1;
-        var ajuste = new Ajuste { AjusteId = ajusteId, ProductoId = 1, AlmacenId = 1, Cantidad = 10, Fecha = DateTime.Now, Tipo = "Incremento" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Ajustes.FindAsync(ajusteId)).ReturnsAsync(ajuste);
+        // Act
+        var result = await _controller.GetAjuste(1);
 
-        var result = await _controller.GetAjuste(ajusteId);
-
+        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result.Result);
         var returnValue = Assert.IsType<AjusteGetDTO>(okResult.Value);
-        Assert.Equal(ajusteId, returnValue.AjusteId);
+        Assert.Equal(1, returnValue.AjusteId);
     }
 
     [Fact]
-    public async Task PutAjuste_ReturnsNoContentResult_WhenAjusteExists()
+    public async Task GetAjustes_ReturnsOkResult()
     {
-        var ajusteId = 1;
-        var ajustePutDTO = new AjustePutDTO { AjusteId = ajusteId, ProductoId = 1, AlmacenId = 1, Cantidad = 10, Fecha = DateTime.Now, Tipo = "Decremento" };
-        var ajuste = new Ajuste { AjusteId = ajusteId, ProductoId = 1, AlmacenId = 1, Cantidad = 10, Fecha = DateTime.Now, Tipo = "Incremento" };
+        // Arrange
+        Setup();
 
-        _mockContext.Setup(ctx => ctx.Ajustes.FindAsync(ajusteId)).ReturnsAsync(ajuste);
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
+        // Act
+        var result = await _controller.GetAjustes();
 
-        var result = await _controller.PutAjuste(ajusteId, ajustePutDTO);
-
-        Assert.IsType<NoContentResult>(result);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        var returnValue = Assert.IsType<List<AjusteGetDTO>>(okResult.Value);
+        Assert.Equal(2, returnValue.Count);
     }
 
     [Fact]
     public async Task PostAjuste_ReturnsOkObjectResult()
     {
-        var ajusteInsertDTO = new AjusteInsertDTO { ProductoId = 1, AlmacenId = 1, Cantidad = 10, Fecha = DateTime.Now, Tipo = "Incremento" };
-        var ajuste = _mapper.Map<Ajuste>(ajusteInsertDTO);
+        // Arrange
+        var ajusteInsertDTO = new AjusteInsertDTO
+        {
+            ProductoId = 1,
+            AlmacenId = 1,
+            Cantidad = 10,
+            Fecha = DateTime.Now,
+            Tipo = "Incremento"
+        };
 
-        _mockContext.Setup(ctx => ctx.Ajustes.Add(It.IsAny<Ajuste>()));
-        _mockContext.Setup(ctx => ctx.SaveChangesAsync(default)).ReturnsAsync(1);
-
+        // Act
         var result = await _controller.PostAjuste(ajusteInsertDTO);
 
-        var okObjectResult = Assert.IsType<OkObjectResult>(result.Result);
-        var returnValue = Assert.IsType<int>(okObjectResult.Value);
-        Assert.Equal(ajuste.AjusteId, returnValue);
+        // Assert
+        var okResult = Assert.IsType<OkObjectResult>(result.Result);
+        Assert.IsType<int>(okResult.Value);
+    }
+
+    [Fact]
+    public async Task PutAjuste_ReturnsNoContentResult_WhenAjusteExists()
+    {
+        // Arrange
+        Setup();
+        var ajustePutDTO = new AjustePutDTO
+        {
+            AjusteId = 1,
+            ProductoId = 1,
+            AlmacenId = 1,
+            Cantidad = 10,
+            Fecha = DateTime.Now,
+            Tipo = "Decremento"
+        };
+
+        // Act
+        var result = await _controller.PutAjuste(1, ajustePutDTO);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
+    }
+
+    [Fact]
+    public async Task DeleteAjuste_ReturnsNoContent_WithValidId()
+    {
+        // Arrange
+        Setup();
+
+        // Act
+        var result = await _controller.DeleteAjuste(1);
+
+        // Assert
+        Assert.IsType<NoContentResult>(result);
     }
 }
