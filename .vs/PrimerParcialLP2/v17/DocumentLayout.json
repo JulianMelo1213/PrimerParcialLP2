@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.tests\\controller\\dbtestfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|solutionrelative:gestioninventarios.tests\\controller\\dbtestfixture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\gestioninventarios.tests\\controller\\proveedorscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63030FB2-E4AF-4870-B9FB-37D303D76941}|GestionInventarios.Tests\\GestionInventarios.Tests.csproj|solutionrelative:gestioninventarios.tests\\controller\\proveedorscontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\controllers\\proveedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\controllers\\proveedorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\models\\gestioninventarioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\models\\gestioninventarioscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|c:\\users\\gusta\\source\\repos\\primerparciallp2\\primerparciallp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{86D5DF6F-251C-4E35-BE6F-147755511B72}|PrimerParcialLP2\\PrimerParcialLP2.csproj|solutionrelative:primerparciallp2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Program.cs",
               "RelativeDocumentMoniker": "PrimerParcialLP2\\Program.cs",
@@ -48,57 +36,21 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "GestionInventariosContext.cs",
               "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
               "RelativeDocumentMoniker": "PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
               "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
               "RelativeToolTip": "PrimerParcialLP2\\Models\\GestionInventariosContext.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAUwBEAAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwBEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-13T15:06:26.544Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DbTestFixture.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\DbTestFixture.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Tests\\Controller\\DbTestFixture.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\DbTestFixture.cs",
-              "RelativeToolTip": "GestionInventarios.Tests\\Controller\\DbTestFixture.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBwAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T18:18:10.804Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProveedorsControllerTests.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\ProveedorsControllerTests.cs",
-              "RelativeDocumentMoniker": "GestionInventarios.Tests\\Controller\\ProveedorsControllerTests.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\GestionInventarios.Tests\\Controller\\ProveedorsControllerTests.cs",
-              "RelativeToolTip": "GestionInventarios.Tests\\Controller\\ProveedorsControllerTests.cs",
-              "ViewState": "AQIAAFgAAAAAAAAAAAAowF0AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T18:37:52.208Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProveedorsController.cs",
-              "DocumentMoniker": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\ProveedorsController.cs",
-              "RelativeDocumentMoniker": "PrimerParcialLP2\\Controllers\\ProveedorsController.cs",
-              "ToolTip": "C:\\Users\\gusta\\source\\repos\\PrimerParcialLP2\\PrimerParcialLP2\\Controllers\\ProveedorsController.cs",
-              "RelativeToolTip": "PrimerParcialLP2\\Controllers\\ProveedorsController.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAYwHsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-13T18:37:51.187Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
               "$type": "Bookmark",
@@ -115,10 +67,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             }
           ]
         },
